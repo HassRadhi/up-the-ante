@@ -6,11 +6,28 @@ signal hit
 @export var speed = 30
 # The downward acceleration while in the air, in meters per second squared.
 @export var fall_acceleration = 75
-
 var target_velocity = Vector3.ZERO
+@onready var _camera_pivot: Node3D = $CameraPivot
+@onready var _camera: Camera3D = $CameraPivot/SpringArm3D/Camera3D
 
 
-func _physics_process(delta):
+
+@export_range(0.0, 1.0) var mouse_sensitivity = 0.01
+@export var tilt_limit = deg_to_rad(75)
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_camera.current = true
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		print("Mouse moved: ", event.relative)
+		_camera_pivot.rotation.x -= event.relative.y * mouse_sensitivity
+		# Prevent the camera from rotating too far up or down.
+		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
+		_camera_pivot.rotation.y += -event.relative.x * mouse_sensitivity
+
+func _physics_process(_delta):
 	# We create a local variable to store the input direction
 	var direction = Vector3.ZERO
 
@@ -34,11 +51,6 @@ func _physics_process(delta):
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 
-	# Vertical Velocity
-	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-
-	# Jumping.
 
 	# Moving the Character
 	velocity = target_velocity
