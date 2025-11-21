@@ -15,6 +15,10 @@ run/main_scene="uid://bh62k3sf7ybnw"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
 [input]
 
 "Steer Left"={

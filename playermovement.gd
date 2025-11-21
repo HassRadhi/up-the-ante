@@ -15,13 +15,13 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 
 	# We check for each move input and update the direction accordingly
-	if Input.is_action_pressed("Steer Right"):
-		direction.x = direction.x + 1
 	if Input.is_action_pressed("Steer Left"):
+		direction.x = direction.x + 1
+	if Input.is_action_pressed("Steer Right"):
 		direction.x = direction.x - 1
-	if Input.is_action_pressed("Reverse"):
-		direction.z = direction.z + 1
 	if Input.is_action_pressed("Accelerate"):
+		direction.z = direction.z + 1
+	if Input.is_action_pressed("Reverse"):
 		direction.z = direction.z - 1
 
 	# Prevent diagonal moving fast af

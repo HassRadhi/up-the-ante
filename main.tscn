@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=8 format=3 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="PackedScene" uid="uid://xmn8f7fubj7n" path="res://ant.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://by0tfnmcfv31c" path="res://addons/zylann.hterrain/hterrain.gd" id="2_1bvp3"]
+[ext_resource type="Resource" uid="uid://c43kk5fgaljr3" path="res://terrain/data.hterrain" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://butx006gb3e1h" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7mycd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(100, 0.1, 100)
@@ -8,16 +11,23 @@ size = Vector3(100, 0.1, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(100, 0.1, 100)
 
+[sub_resource type="Resource" id="Resource_272bh"]
+script = ExtResource("4_7mycd")
+mode = 0
+textures = [[], []]
+
 [node name="Main" type="Node"]
 
+[node name="Ground" type="Node3D" parent="."]
+
 [node name="Ant" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4671409, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0263813, -2.8774252)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(-0.99999243, 0, 0.0038921386, 0.0024237637, 0.7824343, 0.62272847, -0.0030453426, 0.6227332, -0.7824284, 0, 4.4520817, -6.0788364)
+transform = Transform3D(-0.9999924, 3.7183312e-11, 0.0038921388, 0.0019008928, 0.8726239, 0.48838916, -0.0033963728, 0.4883927, -0.87261724, 0, 222.85857, -397.45465)
 projection = 1
 fov = 104.79729
 size = 19.0
@@ -25,13 +35,32 @@ size = 19.0
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08363724, 0.09910431, 0.002708435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("BoxMesh_0xm2m")
-skeleton = NodePath("")
+skeleton = NodePath("../../Ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19614628, 0)
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0027576212, 0.9999962, 0, -0.9999962, 0.0027576212, 0, 11.701302, 0)
+transform = Transform3D(1, 0, 0, 0, 0.046461377, 0.9989201, 0, -0.9989201, 0.046461377, 0, 9.323178, 0)
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("2_1bvp3")
+centered = true
+_terrain_data = ExtResource("3_lquwl")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_272bh")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://by0tfnmcfv31c"
