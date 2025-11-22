@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xmn8f7fubj7n"]
+[gd_scene load_steps=5 format=3 uid="uid://xmn8f7fubj7n"]
 
 [ext_resource type="Script" uid="uid://dg5r6we1iihna" path="res://playermovement.gd" id="1_5tacl"]
 [ext_resource type="PackedScene" uid="uid://cp1utstnvqldr" path="res://Assets/ant.glb" id="2_q4ieg"]
+[ext_resource type="Script" uid="uid://di5a23mrta8cx" path="res://camera.gd" id="3_q4ieg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2f0xw"]
 size = Vector3(0.5, 0.5, 1)
@@ -20,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.48301488)
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("3_q4ieg")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
