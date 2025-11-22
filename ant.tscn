@@ -1,30 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://xmn8f7fubj7n"]
+[gd_scene load_steps=6 format=3 uid="uid://xmn8f7fubj7n"]
 
 [ext_resource type="Script" uid="uid://dg5r6we1iihna" path="res://playermovement.gd" id="1_5tacl"]
 [ext_resource type="PackedScene" uid="uid://cp1utstnvqldr" path="res://Assets/ant.glb" id="2_q4ieg"]
-[ext_resource type="Script" uid="uid://di5a23mrta8cx" path="res://camera.gd" id="3_q4ieg"]
+[ext_resource type="PackedScene" uid="uid://cws5adth63mpo" path="res://Assets/skateboard.glb" id="4_2f0xw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2f0xw"]
-size = Vector3(0.5, 0.5, 1)
+size = Vector3(1, 1, 1.5)
 
-[node name="Ant" type="CharacterBody3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_q4ieg"]
+
+[node name="Ant" type="VehicleBody3D"]
 script = ExtResource("1_5tacl")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1.4056852, 0, 0, 0, 0.7920205, 0, 0, 0, 1.6495018, 0, 0.7609321, 0)
 shape = SubResource("BoxShape3D_2f0xw")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Character" parent="." instance=ExtResource("2_q4ieg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3531226, 0.48301488)
 
-[node name="ant" parent="Pivot" instance=ExtResource("2_q4ieg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.48301488)
+[node name="Board" parent="." instance=ExtResource("4_2f0xw")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.27791023, -0.007685423)
 
-[node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("3_q4ieg")
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 3.5633306e-08, -7.983114e-08, 0, 0.91316175, 0.40759748, 8.742278e-08, 0.40759748, -0.91316175, -2.3710624e-07, 2.212413, -2.7121792)
+current = true
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-spring_length = 3.0
+[node name="FL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88264835, 0.24507785, 0.6634448)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FL"]
+transform = Transform3D(-3.536814e-08, 0.100000024, 0, 0.8091287, 4.37114e-09, 0, 0, 0, 0.8390777, 0, 0, 0)
+mesh = SubResource("CylinderMesh_q4ieg")
+
+[node name="BL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93041444, 0.2696761, -0.8379407)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BL"]
+transform = Transform3D(-3.536814e-08, 0.100000024, 0, 0.8091287, 4.37114e-09, 0, 0, 0, 0.8390777, 0, 0, 0)
+mesh = SubResource("CylinderMesh_q4ieg")
+
+[node name="BR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973503, 0.2696761, -0.8379407)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BR"]
+transform = Transform3D(-3.536814e-08, 0.100000024, 0, 0.8091287, 4.37114e-09, 0, 0, 0, 0.8390777, 0, 0, 0)
+mesh = SubResource("CylinderMesh_q4ieg")
+
+[node name="FR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973503, 0.2696761, 0.71898735)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FR"]
+transform = Transform3D(-3.536814e-08, 0.100000024, 0, 0.8091287, 4.37114e-09, 0, 0, 0, 0.8390777, 0, 0, 0)
+mesh = SubResource("CylinderMesh_q4ieg")
