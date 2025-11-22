@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh62k3sf7ybnw"]
 
-[ext_resource type="PackedScene" uid="uid://xmn8f7fubj7n" path="res://ant.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b52gx80qbsdph" path="res://ant_sphere.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://by0tfnmcfv31c" path="res://addons/zylann.hterrain/hterrain.gd" id="2_1bvp3"]
 [ext_resource type="Resource" uid="uid://c43kk5fgaljr3" path="res://terrain/data.hterrain" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://butx006gb3e1h" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7mycd"]
@@ -20,8 +20,8 @@ textures = [[], []]
 
 [node name="Ground" type="Node3D" parent="."]
 
-[node name="Ant" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.6323657, 0)
+[node name="AntCar" parent="." instance=ExtResource("1_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010994196, 13.939254, 0.025299668)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -31,6 +31,7 @@ mesh = SubResource("BoxMesh_0xm2m")
 skeleton = NodePath("../../Ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
