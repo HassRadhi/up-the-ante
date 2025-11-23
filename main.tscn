@@ -205,5 +205,5 @@ position = Vector2(91, 289)
 texture = ExtResource("4_1bvp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KermitSupreme"]
-position = Vector2(103, 306.5)
+position = Vector2(104, 307)
 shape = SubResource("RectangleShape2D_lquwl")
