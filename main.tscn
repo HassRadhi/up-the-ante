@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=11 format=3 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="Script" uid="uid://by0tfnmcfv31c" path="res://addons/zylann.hterrain/hterrain.gd" id="2_1bvp3"]
 [ext_resource type="Resource" uid="uid://c43kk5fgaljr3" path="res://terrain/data.hterrain" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://butx006gb3e1h" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://wbv54y37pugk" path="res://attempt3.tscn" id="5_7mycd"]
+[ext_resource type="Shader" uid="uid://bexk8ngt07dy2" path="res://Pixelated.gdshader" id="5_lquwl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(100, 0.1, 100)
@@ -16,6 +17,18 @@ script = ExtResource("4_7mycd")
 mode = 0
 textures = [[], []]
 
+[sub_resource type="Curve3D" id="Curve3D_1bvp3"]
+closed = true
+_data = {
+"points": PackedVector3Array(53.885067, 0, -16.474564, -53.885067, 0, 16.474564, -69.2095, 0, -167.42398, -1.9324341, 0, -50.341938, 1.9324341, 0, 50.341938, -130.89072, 0, -42.13399, 39.495453, 0, -53.402817, -39.495453, 0, 53.402817, -115.47043, 0, 171.8227, 22.12973, 0, -33.719604, -22.12973, 0, 33.719604, -101.97769, 0, 324.09818, 44.451508, 0, -16.312164, -44.451508, 0, 16.312164, -206.06467, 0, 422.40265, 47.443146, 0, 13.951813, -47.443146, 0, -13.951813, -348.70255, 0, 437.82297, 6.543976, 0, 44.166656, -6.543976, 0, -44.166656, -414.2388, 0, 353.01126, 0, 0, 0, 0, 0, 0, -420.0214, 0, 204.5909, -9.3550415, 0, 57.89319, 9.3550415, 0, -57.89319, -414.2388, 0, -84.53983, 32.0699, 0, 128.84222, -32.0699, 0, -128.84222, -213.83221, 0, -333.3832, 44.447754, 0, 128.84225, -44.447754, 0, -128.84225, -82.176834, 0, -385.7078, 30.382019, 0, 125.46643, -30.382019, 0, -125.46643, 50.041153, 0, -412.71402, -32.28714, 0, -20.21341, 32.28714, 0, 20.21341, 345.2112, 0, -414.14886, -6.397461, 0, -39.319336, 6.397461, 0, 39.319336, 429.53894, 0, -207.11592, -0.4710083, 0, -23.492424, 0.4710083, 0, 23.492424, 439.66043, 0, -13.220944, 0, 0, 0, 0, 0, 0, 416.53006, 0, 160.25749, 30.699097, 4.5776367e-05, -22.021149, -30.699097, -4.5776367e-05, 22.021149, 361.48575, 0.18269348, 321.24573, 26.98352, 0, -2.2565918, -26.98352, 0, 2.2565918, 257.08105, 0, 371.38174, 32.98494, 0, 35.079132, -32.98494, 0, -35.079132, 138.96463, 0, 351.0837, -15.687302, 0, 47.20833, 15.687302, 0, -47.20833, 127.39932, 0, 227.7213, -139.10669, 0, 26.102837, 139.10669, 0, -26.102837, 196.7908, 0, 119.7792, -30.770752, 0, -5.0706406, 30.770752, 0, 5.0706406, 233.41397, 0, -76.82967, 32.064163, 0, 39.061813, -32.064163, 0, -39.061813, 185.2255, 0, -161.64137, 0, 0, 0, 0, 0, 0, 71.50076, 0, -190.55443),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 24
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
+shader = ExtResource("5_lquwl")
+shader_parameter/pixel_size = 4.0
+
 [node name="Main" type="Node"]
 
 [node name="Ground" type="Node3D" parent="."]
@@ -23,7 +36,7 @@ textures = [[], []]
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010502458, -0.09999976, -0.007217884)
 mesh = SubResource("BoxMesh_0xm2m")
 skeleton = NodePath("../../Ground")
 
@@ -56,3 +69,31 @@ metadata/_custom_type_script = "uid://by0tfnmcfv31c"
 
 [node name="player" parent="." instance=ExtResource("5_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1534247, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_1bvp3")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6962268, 0.10389274, -0.065193176)
+polygon = PackedVector2Array(-4, 0, 0, 0.01, 0, 0.01, 4, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pixelation" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_7mycd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
