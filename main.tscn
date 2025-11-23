@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh62k3sf7ybnw"]
 
-[ext_resource type="PackedScene" uid="uid://b52gx80qbsdph" path="res://ant_sphere.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://by0tfnmcfv31c" path="res://addons/zylann.hterrain/hterrain.gd" id="2_1bvp3"]
 [ext_resource type="Resource" uid="uid://c43kk5fgaljr3" path="res://terrain/data.hterrain" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://butx006gb3e1h" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://wbv54y37pugk" path="res://attempt3.tscn" id="5_7mycd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(100, 0.1, 100)
@@ -19,9 +19,6 @@ textures = [[], []]
 [node name="Main" type="Node"]
 
 [node name="Ground" type="Node3D" parent="."]
-
-[node name="AntCar" parent="." instance=ExtResource("1_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010994196, 13.939254, 0.025299668)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -56,3 +53,6 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://by0tfnmcfv31c"
+
+[node name="player" parent="." instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1534247, 0)
