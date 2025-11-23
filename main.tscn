@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=4 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=9 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="Script" uid="uid://ygqlcoef32hf" path="res://scripts/player_movement.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://nehnjdkajxlc" path="res://assets/verydetailedant.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://assets/world_tileset.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c0wfpjycuuhvi" path="res://assets/fwog.png" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(0.55504686, 0.5683857)
+size = Vector2(0.5817319, 0.46418166)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("3_h2yge")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.2950544, 8, -8, 8, -1.4388695, 1.2841668, -0.5329438, -8, 0.71943474)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
@@ -169,24 +170,40 @@ texture = ExtResource("3_h2yge")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(142, 123)
+
 [node name="Main" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(562, 320)
+[node name="Ant" type="CharacterBody2D" parent="."]
+position = Vector2(330, 360)
 script = ExtResource("1_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Ant"]
 position = Vector2(2, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_h2yge")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ant"]
+position = Vector2(0, -1)
 rotation = -3.1415925
 scale = Vector2(46.84289, -26.390568)
 shape = SubResource("RectangleShape2D_1bvp3")
 
+[node name="Camera2D" type="Camera2D" parent="Ant"]
+position_smoothing_enabled = true
+
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAfABcAAAAAAAAAAAAgABcAAAAAAAAAAAAhABcAAAAAAAAAAAAiABcAAAAAAAAAAAAjABcAAAAAAAAAAAAjABgAAAABAAEAAAAkABgAAAABAAAAAAAlABgAAAABAAAAAAAmABgAAAABAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAAlABcAAAAAAAAAAAAkABcAAAAAAAAAAAAhABgAAAABAAEAAAAgABgAAAABAAAAAAAfABgAAAAAAAEAAAAiABgAAAAAAAEAAAAnABgAAAABAAEAAAAoABgAAAAAAAEAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAAeABgAAAABAAAAAAAdABgAAAABAAAAAAAdABcAAAAAAAAAAAAeABcAAAAAAAAAAAApABgAAAAAAAEAAAAqABcAAAAJAAAAAAArABcAAAAKAAAAAAAsABcAAAALAAAAAAAtABcAAAAJAAAAAAAuABcAAAAKAAAAAAAvABcAAAALAAAAAAAwABcAAAAJAAAAAAAxABcAAAAKAAAAAAAyABcAAAALAAAAAAAzABcAAAAJAAAAAAA0ABcAAAAKAAAAAAA1ABcAAAALAAAAAAA2ABcAAAAAAAAAAAA2ABgAAAABAAAAAAA3ABgAAAAAAAEAAAA3ABcAAAAAAAAAAAA3ABYAAAAAAAUAAAA3ABUAAAAAAAMAAAA4ABUAAAAAAAUAAAA4ABQAAAAAAAQAAAA4ABMAAAAAAAMAAAA4ABcAAAAAAAEAAAA4ABYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAfABcAAAAAAAAAAAAgABcAAAAAAAAAAAAhABcAAAAAAAAAAAAiABcAAAAAAAAAAAAjABcAAAAAAAAAAAAjABgAAAABAAEAAAAkABgAAAABAAAAAAAlABgAAAABAAAAAAAmABgAAAABAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAAlABcAAAAAAAAAAAAkABcAAAAAAAAAAAAhABgAAAABAAEAAAAgABgAAAABAAAAAAAfABgAAAAAAAEAAAAiABgAAAAAAAEAAAAnABgAAAABAAEAAAAoABgAAAAAAAEAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAAeABgAAAABAAAAAAAdABgAAAABAAAAAAAdABcAAAAAAAAAAAAeABcAAAAAAAAAAAApABgAAAAAAAEAAAAqABcAAAAJAAAAAAArABcAAAAKAAAAAAAsABcAAAALAAAAAAAtABcAAAAJAAAAAAAuABcAAAAKAAAAAAAvABcAAAALAAAAAAAwABcAAAAJAAAAAAAxABcAAAAKAAAAAAAyABcAAAALAAAAAAAzABcAAAAJAAAAAAA0ABcAAAAKAAAAAAA1ABcAAAALAAAAAAA2ABcAAAAAAAAAAAA2ABgAAAABAAAAAAA3ABgAAAAAAAEAAAA3ABcAAAAAAAAAAAA3ABYAAAAAAAUAAAA3ABUAAAAAAAMAAAA4ABUAAAAAAAUAAAA4ABQAAAAAAAQAAAA4ABMAAAAAAAMAAAA4ABcAAAAAAAEAAAA4ABYAAAAAAAAAAAAcABcAAAAAAAAAAAAbABcAAAAAAAAAAAAaABcAAAAAAAAAAAAZABcAAAAAAAAAAAAYABcAAAAAAAAAAAAXABcAAAAAAAAAAAAWABcAAAAAAAAAAAAVABcAAAAAAAAAAAAUABcAAAAAAAAAAAATABcAAAAAAAAAAAASABcAAAAAAAAAAAARABcAAAAAAAAAAAAQABcAAAAAAAAAAAAPABcAAAAAAAAAAAAOABcAAAAAAAAAAAANABcAAAAAAAAAAAAMABcAAAAAAAAAAAALABcAAAAAAAAAAAAKABcAAAAAAAAAAAAJABcAAAAAAAAAAAAIABcAAAAAAAAAAAAHABcAAAAAAAAAAAAGABcAAAAAAAAAAAAFABcAAAAAAAAAAAAEABcAAAAAAAAAAAADABcAAAAAAAAAAAACABcAAAAAAAAAAAABABcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
+
+[node name="KermitSupreme" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="KermitSupreme"]
+position = Vector2(91, 289)
+texture = ExtResource("4_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KermitSupreme"]
+position = Vector2(103, 306.5)
+shape = SubResource("RectangleShape2D_lquwl")
