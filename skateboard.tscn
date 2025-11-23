@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=4 uid="uid://ex61uvb7kqjg"]
+
+[ext_resource type="PackedScene" uid="uid://cp1utstnvqldr" path="res://Assets/ant.glb" id="1_nnfwd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu47e"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.90691906, 0.31602845, 0, 1)
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vcju2"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIAAwABAAUAAgAEAAYAAgAGAAAABwAEAAMABwADAAUACAAGAAQABwAJAAQACAAEAAkACgAAAAYACgAGAAgACwAAAAoACwAMAAAAAAAMAAEADQALAAoACgAIAA4ADQAKAA4ADgAIAA8ACQAPAAgADgAQAA0ADgAPABAACQARAA8AEAAPABEABwARAAkADQASAAsACwASAAwADQAQABMADQATABIAEAARABQAFAATABAAFQARAAcAFQAUABEABwAFABUAFAAWABMAFQAWABQAEgATABYABQAWABUAEgAWABcABQAXABYADAASABcAAQAXAAUADAAXAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("p8BXP///AABXP6fA//8AAKfAp8D//wAAp8D//6fAAAD//6fAp8AAAFc///+nwAAA//9XP6fAAACnwP//Vz8AAP//Vz9XPwAA//+nwFc/AACnwAAAp8AAAFc/AACnwAAAVz9XP///AABXPwAAVz8AAKfAAABXPwAAp8BXPwAAAABXP1c/AAAAAKfAp8AAAAAAAABXP6fAAAAAAFc/Vz8AAFc/p8AAAAAAVz///1c/AAAAAKfAVz8AAAAAp8CnwAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vkupc"]
+resource_name = "skateboard_Cube_030"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("1W8pMCmQ1Q8pkCkw1W/VD9VvKXApkNVPKZApcNVv1U/VrylwKdDVTynQKXDVr9VP1W8p8CmQ1c8pkCnw1W/Vz9VvKbApkNWPKZApsNVv1Y/VL9VP/x/VT9Uv/z8pkP//KZAp8P+fKfDVLylw1S//f/8fKXD/n9XPKZDVzymQ/78pUNVPKVD/P/9f1U//nykwKZD/PymQKTApUClw/18pcClQ/3//n9WPKZDVjymQ/3/VLylw/x/VT9Uv1U//Hylw1W///ymQKfApkP//1W8p8P+fKfApkNXP/5/VzymQKfApkCmw1W/Vz9VvKbApkNXPKVApcNUv/3/VLylwKVD/f/+fKbApkNWP/5/VjymQKbApkClw1W/Vj9VvKXApkNWPKVDVT9VvKXApUClw1W/VT9WvKXApkNVP1a/VTymQKXApkCkw1W/VT9VvKTApkNVP1S/VTylQ/z8pUNVP1S//P/+fKTApkNUP/5/VDymQKTDVLylwKVDVTylQKXDVL9VP"),
+"format": 34896613399,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFwAYABkAGgAbABwAHQAeAB8AIAAhACIAIwAkACUAJgAnACgAKQAqACsALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0A"),
+"material": SubResource("StandardMaterial3D_eu47e"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("p8BXP////79XP6fA////v6fAp8D///+/Vz9XP////7///1c/Vz9U1f//p8CnwFTV//+nwFc/VNX//1c/p8BU1afA//9XP///Vz///6fA//9XP///Vz///6fA//+nwP//AABXP6fAVNUAAKfAVz9U1QAAp8CnwFTVAABXP1c/VNVXP1c/AAD//6fAp8AAAP//Vz+nwAAA//+nwFc/AAD//1c/AACnwJaxAABXP6fAlrFXP1c///+WsVc/p8D//5axAACnwKfAlrFXP///p8CWsVc/AABXP0DcVz9XPwAAQNwAAFc/Vz9A3Fc///9XP0DcAACnwFc/QNxXP6fAAABA3KfAAACnwJaxp8BXP///lrH//1c/p8CWsafA//+nwErA//+nwKfASsCnwKfA//9KwKfAAABXP0Dc//9XP1c/QNynwFc/AABA3KfA//9XPxr7p8CnwAAAGvv//6fAVz8a+1c/AABXP/zFAABXP6fA/MVXPwAAp8D8xQAAVz9XP/zFVz9XP////MUAAKfAp8D8xVc/p8D///zFAABXP6fA/MVXP///p8D8xQAAp8BXP/zFVz///1c//MUAAKfAp8D8xVc/p8AAAKrpAABXP1c/qulXP1c/AACq6QAAp8BXP6rpp8AAAFc//99XP1c/AAD/31c/AABXP//fp8BXPwAA/99XP///Vz+q6afAp8AAAKrpp8D//1c/qulXP6fAAACq6f//p8BXP6rpp8BXPwAAqun//1c/Vz+q6afAp8AAAKrpp8AAAKfA/MX//1c/Vz/8xafAAABXP/zF//9XP6fA/MWnwP//Vz+q6f//p8CnwKrpp8D//6fAqun//6fAVz+q6afAp8D///zF//9XP6fA/MWnwFc////8xf//p8CnwPzFVz8AAKfA/5+nwFc/////n6fAAACnwP+fVz9XP////5+nwP//p8D8xVc/p8D///zFVz///6fA/MWnwKfA///8xVc/AABXP/+/p8AAAKfA/7+nwAAAVz//v1c/AACnwP+//////////////////////6oqqiqqKqoqqiqqKqoqqir/f/+//3//v/9//7//f/+/VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//78yRvCXMkbwlzJG8JcN6DHGDegxxg3oMcZnMY2gZzGNoGcxjaBx32excd9nsXHfZ7HxF8058RfNOfEXzTnFyEUHxchFB8XIRQeNIJdOjSCXTo0gl04Eta6oBLWuqAS1rqj+Of6c/jn+nP45/pz+Of6c/+L/4v/i/+L/4v/i/+L/4v/i/bn/4v25/+L9uf/i/bn6yvrK+sr6yvrK+sr6yvrKAAD/fwAA/38AAP9/AAD/fwS1BLUEtQS1BLUEtQS1BLUENQQ1BDUENQQ1BDUENQQ1/xwBRv8cAUb/HAFG/xwBRgQ19hUENfYVBDX2FQQ19hX/HP8c/xz/HP8c/xz/HP8cAAD/fwAA/38AAP9/AAD/f//i/xz/4v8c/+L/HP/i/xwAAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vcju2")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mlq8i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2so4x"]
+
+[node name="Skateboard" type="Node3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -0.40108272)
+
+[node name="Cube_020" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.1, 0, -3.4969112e-08, 0, 0.01, 0, 8.742278e-09, 0, -0.4, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vkupc")
+skeleton = NodePath("")
+
+[node name="FrontRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.1855695e-09, -0.01, 0, 0.05, -4.3711387e-10, 0, 0, 0, 0.05, -0.045233928, -0.029874533, 0.3181915)
+mesh = SubResource("CylinderMesh_mlq8i")
+
+[node name="FrontLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.1855695e-09, -0.01, 0, 0.05, -4.3711387e-10, 0, 0, 0, 0.05, 0.04893376, -0.02987453, 0.3181915)
+mesh = SubResource("CylinderMesh_mlq8i")
+
+[node name="BackRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.1855695e-09, -0.01, 0, 0.05, -4.3711387e-10, 0, 0, 0, 0.05, -0.046219416, -0.029874533, -0.33391476)
+mesh = SubResource("CylinderMesh_mlq8i")
+
+[node name="BackLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.1855695e-09, -0.01, 0, 0.05, -4.3711387e-10, 0, 0, 0, 0.05, 0.04893376, -0.02987453, -0.33117148)
+mesh = SubResource("CylinderMesh_mlq8i")
+
+[node name="FrontBar" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -0.01355344, 0.3220271)
+mesh = SubResource("BoxMesh_2so4x")
+
+[node name="BackBar" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -0.01355344, -0.3408044)
+mesh = SubResource("BoxMesh_2so4x")
+
+[node name="Character" parent="." instance=ExtResource("1_nnfwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.8977901, 0.425)
+
+[node name="RayCast3D" type="RayCast3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

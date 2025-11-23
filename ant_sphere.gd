@@ -1,41 +1,49 @@
 extends RigidBody3D
 
+var sphere_offset = Vector3.DOWN
+var acceleration = 35.0
+var steering = 19.0
+var turn_speed = 4.0
+var turn_stop_limit = 0.75
+var body_tilt = 35
 
-@onready var ant: Node3D = $ant         
-@onready var skateboard: Node3D = $ant/skateboard 
-@onready var ground_ray: RayCast3D = $ant/"Ground Detector"
+var speed_input = 0
+var turn_input = 0
 
-@export var BALL_RADIUS: float = 1.5
-@export var ROLLING_FORCE: float = 40.0       
+@onready var ant_mesh = $Character
+@onready var ground_ray = $Character/RayCast3D
+#@onready var right_wheel = $Character/Skateboard/FrontRight
+#@onready var left_wheel = $Character/Skateboard/FrontLeft
 
+#func _ready():
+#	ground_ray.add_exception(self)
+	
+func _physics_process(_delta):
+	ant_mesh.position = position + sphere_offset
+	if ground_ray.is_colliding():
+		apply_central_force(-ant_mesh.global_transform.basis.z * speed_input)
+	
+func _process(delta):
+	if not ground_ray.is_colliding():
+		return
+	speed_input = Input.get_axis("brake", "accelerate") * acceleration
+	turn_input = Input.get_axis("steer_right", "steer_left") * deg_to_rad(steering)
+	#right_wheel.rotation.y = turn_input
+	#left_wheel.rotation.y = turn_input
+	
+	if linear_velocity.length() > turn_stop_limit:
+		var new_basis = ant_mesh.global_transform.basis.rotated(ant_mesh.global_transform.basis.y, turn_input)
+		ant_mesh.global_transform.basis = ant_mesh.global_transform.basis.slerp(new_basis, turn_speed * delta)
+		ant_mesh.global_transform = ant_mesh.global_transform.orthonormalized()
+		var t = -turn_input * linear_velocity.length() / body_tilt
+		ant_mesh.rotation.z = lerp(ant_mesh.rotation.z, t, 5.0 * delta)
+		if ground_ray.is_colliding():
+			var n = ground_ray.get_collision_normal()
+			var xform = align_with_y(ant_mesh.global_transform, n)
+			ant_mesh.global_transform = ant_mesh.global_transform.interpolate_with(xform, 10.0 * delta)
 
-func _ready() -> void:
-	# These nodes no longer inherit Ball's transform
-	ant.top_level = true
-	ground_ray.top_level = true
-
-
-func _physics_process(delta: float) -> void:
-	var center: Vector3 = global_transform.origin
-	var bottom_pos: Vector3 = center + Vector3.DOWN * BALL_RADIUS
-
-	# Keep the ant at the bottom, upright in world space
-	var ant_xform: Transform3D = ant.global_transform
-	ant_xform.origin = bottom_pos          # position
-	ant_xform.basis = Basis()              # identity -> upright (no tilt)
-	ant.global_transform = ant_xform
-
-	# Move the ray so it always checks under the ball
-	ground_ray.global_transform.origin = center
-
-
-
-	if Input.is_action_pressed("Accelerate"):
-		angular_velocity.x += ROLLING_FORCE * delta
-	elif Input.is_action_pressed("Reverse"):
-		angular_velocity.x -= ROLLING_FORCE * delta
-
-	if Input.is_action_pressed("Steer Left"):
-		angular_velocity.z -= ROLLING_FORCE * delta
-	elif Input.is_action_pressed("Steer Right"):
-		angular_velocity.z += ROLLING_FORCE * delta
+func align_with_y(xform, new_y):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+#	xform.basis = xform.basis.orthonormalized()
+	return xform.orthonormalized()

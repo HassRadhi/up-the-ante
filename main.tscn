@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://by0tfnmcfv31c" path="res://addons/zylann.hterrain/hterrain.gd" id="2_1bvp3"]
 [ext_resource type="Resource" uid="uid://c43kk5fgaljr3" path="res://terrain/data.hterrain" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b52gx80qbsdph" path="res://ant_sphere.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://butx006gb3e1h" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://wbv54y37pugk" path="res://attempt3.tscn" id="5_7mycd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(100, 0.1, 100)
@@ -54,5 +54,8 @@ shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://by0tfnmcfv31c"
 
-[node name="player" parent="." instance=ExtResource("5_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1534247, 0)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.99999994, 0, 2.9802322e-08, 7.713409e-09, 0.9659258, 0.258819, -2.8786832e-08, 0.25881904, -0.96592575, 0, 5.7727275, -8.220279)
+
+[node name="Ant" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.919527, 0)
