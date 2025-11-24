@@ -310,7 +310,7 @@ script = ExtResource("3_7mycd")
 script = ExtResource("5_efxa6")
 
 [node name="Stun" type="Timer" parent="Ant"]
-wait_time = 0.3
+wait_time = 0.25
 one_shot = true
 
 [node name="Layer0" type="TileMapLayer" parent="."]
