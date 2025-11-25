@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d30d5r3j2m5gt"
-path="res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"
+uid="uid://bix885rjkhj7m"
+path="res://.godot/imported/FrogSlam.png-bc27ff90db5d6370cfc5c5a98f0c97e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Smoke.png"
-dest_files=["res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"]
+source_file="res://Assets/Sprites/FrogSlam.png"
+dest_files=["res://.godot/imported/FrogSlam.png-bc27ff90db5d6370cfc5c5a98f0c97e0.ctex"]
 
 [params]
 

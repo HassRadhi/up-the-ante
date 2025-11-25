@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=31 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="Script" uid="uid://ygqlcoef32hf" path="res://scripts/player/player_movement.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://c7u3dgj55xxfm" path="res://scripts/player/boss_collide.gd" id="1_kek77"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://Assets/world_tileset.png" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bnelan4wbc06g" path="res://scripts/bosses/kermit/kermit_actions.gd" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://b45e4x4ayentg" path="res://scripts/player/effect_applier.gd" id="5_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bq7xnm7hgtvsx" path="res://Assets/Sprites/FrogPhase2.png" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bwfafv1ba3i2j" path="res://scripts/bosses/kermit/stomp.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://scripts/states/enemy_stomp.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://scripts/states/state_machine.gd" id="8_kek77"]
@@ -180,6 +181,88 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("7_4c57u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cegan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}],
+"loop": true,
+"name": &"phase_2_faceback",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}],
+"loop": true,
+"name": &"phase_2_facecam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}],
+"loop": true,
+"name": &"phase_2_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}],
+"loop": true,
+"name": &"phase_2_jump",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(142, 123)
 
@@ -209,13 +292,9 @@ script = ExtResource("1_0xm2m")
 
 [node name="AntSprite" parent="Ant" instance=ExtResource("13_ycdy4")]
 position = Vector2(0, -12)
-animation = &"Turning"
-frame = 0
-frame_progress = 0.0
 script = ExtResource("3_dg77c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ant"]
-visible = false
 position = Vector2(-0.5, -6.5)
 rotation = -3.1415925
 scale = Vector2(46.84289, -26.390568)
@@ -250,8 +329,14 @@ position = Vector2(104, 319)
 scale = Vector2(3, 3)
 autoplay = "FaceTurn"
 
+[node name="Sprite2D" type="AnimatedSprite2D" parent="KermitSupreme"]
+position = Vector2(-332, -59)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"phase_2_facecam"
+autoplay = "phase_2_faceback"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KermitSupreme"]
-visible = false
 position = Vector2(104, 307)
 shape = SubResource("RectangleShape2D_lquwl")
 

@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,3 +7,4 @@ func _ready() -> void:
 func apply_hit_affect() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:v", 1, 0.25).from(15)
+	
