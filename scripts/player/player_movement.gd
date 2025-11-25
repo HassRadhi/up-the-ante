@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
+var speedMult = 1.0
 
 @onready var stunTimer = $Stun
 @onready var sprite = $AntSprite
+@onready var boostTimer = $TurnBoost
 var isStunned = false
 var isGrounded = false
 var isOnFloor = false
@@ -14,6 +16,7 @@ var facingRight = true
 var jumping = false
 var landing = false
 var airtiming = false
+var turning = false
 
 func _ready():
 	SignalBus.stun_player.connect(on_stun)
@@ -37,24 +40,26 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			sprite.play("InitialJump")
 			jumping = true
+			turning = false
 		elif !isGrounded:
 			isGrounded = true
 			sprite.play("Landing")
 			landing = true
 			airtiming = false
 	
-	if airtiming:
+	if airtiming || turning:
 		move_and_slide()
 		return
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		if (direction < 0):
-			facingRight = false
-		else:
-			facingRight = true
+		var oldFacing = facingRight
+		facingRight = direction > 0
+		
+		if oldFacing != facingRight:
+			attempt_to_turn()
 			
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * speedMult
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -69,9 +74,11 @@ func _on_stun_timeout() -> void:
 	isStunned = false
 	
 func update_animation() -> void:
-	sprite.flip_h = !facingRight
+	if (!turning):
+		sprite.flip_h = !facingRight
 	
 	if !isOnFloor:
+		turning = false
 		# If in the air
 		if sprite.animation != "AirTime" && !jumping:
 			airtiming = true
@@ -82,7 +89,7 @@ func update_animation() -> void:
 
 	else:
 		# On the ground
-		if landing:
+		if landing || turning:
 			return
 		if !velocity.x:
 			sprite.play("Idle")
@@ -94,6 +101,21 @@ func _on_ant_sprite_animation_finished() -> void:
 	match sprite.animation:
 		"InitialJump":
 			jumping = false
-			print("jump ended")
 		"Landing":
 			landing = false
+		"Turning":
+			# Successful Turn
+			turning = false
+			speedMult = 1.5
+			boostTimer.start()
+
+func attempt_to_turn() -> void:
+	if isOnFloor && sprite.animation != "InitialJump":
+		if sprite.animation == "Turning":
+			sprite.stop()
+		sprite.play("Turning")
+		turning = true
+		landing = false
+
+func _on_turn_boost_timeout() -> void:
+	speedMult = lerp(speedMult, 1.0, 1)

@@ -231,7 +231,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Turning",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -244,4 +244,4 @@ animations = [{
 
 [node name="Ant" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_hr5jw")
-animation = &"Landing"
+animation = &"Turning"

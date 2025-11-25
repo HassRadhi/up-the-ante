@@ -8,7 +8,7 @@ func _ready():
 func _move_camera_limit(limit):
 	limit_left = limit
 
-func _camera_shake(mag = 1000.0):
+func _camera_shake(mag = 100.0):
 	var initial_transform:Transform2D = self.transform # Store the full initial transform of the camera
 	var elapsed_time:float = 0.0
 	while elapsed_time < period:
