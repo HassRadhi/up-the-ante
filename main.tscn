@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c7u3dgj55xxfm" path="res://scripts/player/boss_collide.gd" id="1_kek77"]
 [ext_resource type="Script" uid="uid://bb7o1r0bq2p10" path="res://scripts/player/camera_2d.gd" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://clxypkdrp33l" path="res://scripts/player/ant_sprite.gd" id="3_dg77c"]
-[ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://Assets/world_tileset.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://assets/world_tileset.png" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bnelan4wbc06g" path="res://scripts/bosses/kermit/kermit_actions.gd" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://b45e4x4ayentg" path="res://scripts/player/effect_applier.gd" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://bwfafv1ba3i2j" path="res://scripts/bosses/kermit/stomp.gd" id="7_272bh"]
@@ -209,9 +209,7 @@ script = ExtResource("1_0xm2m")
 
 [node name="AntSprite" parent="Ant" instance=ExtResource("13_ycdy4")]
 position = Vector2(0, -12)
-animation = &"Turning"
-frame = 0
-frame_progress = 0.0
+animation = &"AirTime"
 script = ExtResource("3_dg77c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ant"]

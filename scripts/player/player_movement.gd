@@ -4,51 +4,57 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @onready var stunTimer = $Stun
-@onready var animation = $AntSprite
+@onready var sprite = $AntSprite
 var isStunned = false
 var isGrounded = false
-var landing_locked = false
+var isOnFloor = false
 
+# Anim States
+var facingRight = true
+var jumping = false
+var landing = false
+var airtiming = false
 
 func _ready():
 	SignalBus.stun_player.connect(on_stun)
 	
 func _physics_process(delta: float) -> void:
-	if not landing_locked:
-		update_animation(is_on_floor())
+	isOnFloor = is_on_floor()
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if not isOnFloor:
 		velocity += get_gravity() * delta
+		isGrounded = false
 
 	if isStunned:
 		move_and_slide()
 		return
 	
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		animation.play("InitalJump")
-		print("oh yea baby")
-		
+	update_animation()
+	# Handle floor actions
+	if isOnFloor:
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = JUMP_VELOCITY
+			jumping = true
+			sprite.play("InitialJump")
+		elif !isGrounded:
+			isGrounded = true
+			sprite.play("Landing")
+			landing = true
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
+		if (direction < 0):
+			facingRight = false
+		else:
+			facingRight = true
+			
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-		
-	if is_on_floor():
-		# Handle hitting ground
-		if !isGrounded:
-			isGrounded = true
-			play_landing()
-	elif isGrounded:
-		isGrounded = false
-	
-
 
 func on_stun():
 	isStunned = true
@@ -57,28 +63,30 @@ func on_stun():
 func _on_stun_timeout() -> void:
 	isStunned = false
 	
-func update_animation(on_floor: bool) -> void:
-	if not on_floor:
+func update_animation() -> void:
+	sprite.flip_h = !facingRight
+	
+	if !isOnFloor:
 		# If in the air
-		if animation.animation != "AirTime":
-			animation.play("AirTime")
-			print("Airtime")
+		if sprite.animation != "AirTime" && !jumping:
+			sprite.play("AirTime")
+
 	else:
 		# On the ground
-		if animation.animation != "Skating":
-			animation.play("Skating")
-			print("Skating")
-		
-func play_landing() -> void:
-	animation.stop()
-	landing_locked = true
-	animation.play("Landing")
-	print("This is getting a bit insane")
+		if landing:
+			return
+		if !velocity.x:
+			sprite.play("Idle")
+		elif sprite.animation != "Skating":
+			sprite.play("Skating")
 
 
 func _on_ant_sprite_animation_finished() -> void:
-	if animation.animation == "Landing":
-		print("Captin are we gettin this")
-		landing_locked = false
-		update_animation(is_on_floor())
-	
+	match sprite.animation:
+		"InitialJump":
+			jumping = false
+			print("jump ended")
+		"Landing":
+			landing = false
+		"AirTime":
+			airtiming = false
