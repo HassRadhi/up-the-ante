@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 
 @onready var stunTimer = $Stun
 @onready var sprite = $AntSprite
@@ -35,13 +35,17 @@ func _physics_process(delta: float) -> void:
 	if isOnFloor:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
-			jumping = true
 			sprite.play("InitialJump")
+			jumping = true
 		elif !isGrounded:
 			isGrounded = true
 			sprite.play("Landing")
 			landing = true
+			airtiming = false
 	
+	if airtiming:
+		move_and_slide()
+		return
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
@@ -59,6 +63,7 @@ func _physics_process(delta: float) -> void:
 func on_stun():
 	isStunned = true
 	stunTimer.start()
+	sprite.stop()
 
 func _on_stun_timeout() -> void:
 	isStunned = false
@@ -69,7 +74,11 @@ func update_animation() -> void:
 	if !isOnFloor:
 		# If in the air
 		if sprite.animation != "AirTime" && !jumping:
+			airtiming = true
 			sprite.play("AirTime")
+		if airtiming && !Input.is_action_pressed("jump"):
+			sprite.play("Fall")
+			airtiming = false
 
 	else:
 		# On the ground
@@ -88,5 +97,3 @@ func _on_ant_sprite_animation_finished() -> void:
 			print("jump ended")
 		"Landing":
 			landing = false
-		"AirTime":
-			airtiming = false

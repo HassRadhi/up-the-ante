@@ -20,6 +20,10 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("1_oav7h")
 region = Rect2(192, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p3op"]
+atlas = ExtResource("1_oav7h")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvseq"]
 atlas = ExtResource("2_q4ieg")
 region = Rect2(64, 64, 64, 64)
@@ -51,14 +55,6 @@ region = Rect2(64, 128, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsvr1"]
 atlas = ExtResource("1_oav7h")
 region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hgev"]
-atlas = ExtResource("1_oav7h")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5p3op"]
-atlas = ExtResource("1_oav7h")
-region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0eb45"]
 atlas = ExtResource("1_oav7h")
@@ -112,6 +108,10 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("3_2f0xw")
 region = Rect2(192, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hgev"]
+atlas = ExtResource("1_oav7h")
+region = Rect2(192, 128, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hr5jw"]
 animations = [{
 "frames": [{
@@ -130,6 +130,14 @@ animations = [{
 "loop": true,
 "name": &"AirTime",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p3op")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -166,9 +174,6 @@ animations = [{
 "speed": 20.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1hgev")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5p3op")
 }, {
@@ -227,8 +232,16 @@ animations = [{
 "loop": false,
 "name": &"Turning",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hgev")
+}],
+"loop": true,
+"name": &"tempLanding0",
+"speed": 5.0
 }]
 
 [node name="Ant" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_hr5jw")
-animation = &"InitialJump"
+animation = &"Landing"
