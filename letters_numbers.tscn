@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b615tljaa8yx1"]
+
+[ext_resource type="Texture2D" uid="uid://5wv2jlkgnf5e" path="res://Assets/Sprites/Letters_and_Numbers.png" id="1_drj7j"]
+
+[node name="Letters_Numbers" type="Sprite2D"]
+texture = ExtResource("1_drj7j")

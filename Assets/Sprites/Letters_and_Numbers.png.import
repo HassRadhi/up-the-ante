@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d30d5r3j2m5gt"
-path="res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"
+uid="uid://5wv2jlkgnf5e"
+path="res://.godot/imported/Letters_and_Numbers.png-aa7dd621f0c8e772915326be65e9a8dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Smoke.png"
-dest_files=["res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"]
+source_file="res://Assets/Sprites/Letters_and_Numbers.png"
+dest_files=["res://.godot/imported/Letters_and_Numbers.png-aa7dd621f0c8e772915326be65e9a8dc.ctex"]
 
 [params]
 

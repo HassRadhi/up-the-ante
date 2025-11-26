@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcujan1snpidb"
-path="res://.godot/imported/AntJump.png-22dc15db72c51252323a3675bc2d0f6c.ctex"
+path="res://.godot/imported/AntJump.png-df8893747e6ac4a6027bd637b8b6bd49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/AntJump.png"
-dest_files=["res://.godot/imported/AntJump.png-22dc15db72c51252323a3675bc2d0f6c.ctex"]
+source_file="res://Assets/Sprites/AntJump.png"
+dest_files=["res://.godot/imported/AntJump.png-df8893747e6ac4a6027bd637b8b6bd49.ctex"]
 
 [params]
 
