@@ -61,6 +61,10 @@ crouch={
 2d_physics/layer_3="floor"
 2d_physics/layer_4="wall"
 
+[physics]
+
+2d/default_gravity_vector=Vector2(0, 0.3)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

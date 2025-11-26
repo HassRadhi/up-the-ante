@@ -5,7 +5,7 @@ signal landed
 
 @export var enemy : CharacterBody2D
 
-const LEAP_VECTOR = Vector2(100, -1000)
+const LEAP_VECTOR = Vector2(100, -1500)
 
 var isGrounded = false
 
@@ -28,7 +28,7 @@ func update(_delta):
 
 func physics_update(delta: float):
 	if not enemy.is_on_floor():
-		enemy.velocity += enemy.get_gravity() * delta
+		enemy.velocity += enemy.get_gravity() * delta * 5
 	
 	if enemy.is_on_floor():
 		enemy.velocity.x = 0

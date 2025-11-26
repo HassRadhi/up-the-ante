@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal airtime_success
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -150.0
 var speedMult = 1.0
 
 @onready var stunTimer = $Stun

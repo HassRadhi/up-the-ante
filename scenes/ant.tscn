@@ -37,7 +37,7 @@ script = ExtResource("5_lv1r1")
 body = NodePath("..")
 
 [node name="Stun" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="TurnBoost" type="Timer" parent="."]
