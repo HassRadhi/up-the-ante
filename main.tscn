@@ -280,7 +280,11 @@ label_settings = SubResource("LabelSettings_yaehf")
 horizontal_alignment = 1
 uppercase = true
 
+[node name="SameCombo" type="Timer" parent="CanvasLayer/TrickNotifier"]
+one_shot = true
+
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="landed" from="KermitSupreme/EnemyStomp" to="KermitSupreme/Stomp" method="_on_enemy_stomp_landed"]
 [connection signal="body_shape_entered" from="KermitSupreme/BossHurtbox" to="Ant" method="_on_boss_hurtbox_body_shape_entered"]
 [connection signal="body_shape_exited" from="KermitSupreme/BossHurtbox" to="Ant" method="_on_boss_hurtbox_body_shape_exited"]
+[connection signal="timeout" from="CanvasLayer/TrickNotifier/SameCombo" to="CanvasLayer/TrickNotifier" method="_on_same_combo_timeout"]

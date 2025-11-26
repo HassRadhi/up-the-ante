@@ -11,9 +11,8 @@ func _ready() -> void:
 
 func _apply_hit_affect() -> void:
 	if !immune:
-		var curVelocity = abs(body.velocity.x)
 		SignalBus.stun_player.emit()
-		body.velocity = Vector2(750 + curVelocity,-250)
+		body.velocity = Vector2(500,-150)
 	
 	else:
 		iframes.start()
