@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d30d5r3j2m5gt"
-path="res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"
+uid="uid://cljwv7d2tg00k"
+path="res://.godot/imported/MushroomNPC.png-c65fa9cce23f30fe89632567e907c763.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Smoke.png"
-dest_files=["res://.godot/imported/Smoke.png-3d1294fcad7d8c53e9996a9a74a0f3cb.ctex"]
+source_file="res://Assets/Sprites/MushroomNPC.png"
+dest_files=["res://.godot/imported/MushroomNPC.png-c65fa9cce23f30fe89632567e907c763.ctex"]
 
 [params]
 

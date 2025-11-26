@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdkmlwjv6yeot"
-path="res://.godot/imported/AntTurn.png-eb72003e983a4aa397fe5baa4380d5fc.ctex"
+path="res://.godot/imported/AntTurn.png-c0653bd78d341d689203c59f7f88896c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/AntTurn.png"
-dest_files=["res://.godot/imported/AntTurn.png-eb72003e983a4aa397fe5baa4380d5fc.ctex"]
+source_file="res://Assets/Sprites/AntTurn.png"
+dest_files=["res://.godot/imported/AntTurn.png-c0653bd78d341d689203c59f7f88896c.ctex"]
 
 [params]
 
