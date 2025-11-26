@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c2i57tewpx0y3"]
 
-[ext_resource type="Texture2D" uid="uid://d30d5r3j2m5gt" path="res://Assets/Sprites/Smoke.png" id="1_niign"]
+[ext_resource type="Texture2D" uid="uid://d30d5r3j2m5gt" path="res://assets/sprites/Smoke.png" id="1_niign"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca0x4"]
 atlas = ExtResource("1_niign")
@@ -70,7 +70,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Smoke",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [node name="Smoke" type="AnimatedSprite2D"]

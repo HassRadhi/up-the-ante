@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://o5qntbo4uhww"]
+
+[ext_resource type="Script" uid="uid://b15aeojpun2hf" path="res://scripts/bosses/kermit/stomp.gd" id="1_2hta0"]
+[ext_resource type="PackedScene" uid="uid://c2i57tewpx0y3" path="res://scenes/smoke.tscn" id="2_2hta0"]
+[ext_resource type="Script" uid="uid://bvdsjlgthkodk" path="res://scripts/bosses/kermit/stomp_collision.gd" id="3_lediw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hta0"]
+size = Vector2(20.386475, 20)
+
+[node name="Stomp" type="Node2D"]
+script = ExtResource("1_2hta0")
+
+[node name="Sprite" parent="." instance=ExtResource("2_2hta0")]
+visible = false
+texture_filter = 1
+scale = Vector2(27.800003, 1.3199991)
+frame = 0
+frame_progress = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 292.28784
+offset_top = 323.5606
+offset_right = 332.28784
+offset_bottom = 363.5606
+scale = Vector2(0.33473498, -0.027282476)
+color = Color(0.45425114, 0.34621954, 0.2684145, 1)
+
+[node name="FartCD" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_lediw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6.4000034, 0)
+scale = Vector2(33.12, 1)
+shape = SubResource("RectangleShape2D_2hta0")
+disabled = true
+
+[connection signal="timeout" from="FartCD" to="." method="_on_fart_cd_timeout"]
+[connection signal="body_shape_entered" from="Area2D" to="Area2D" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="Area2D" method="_on_body_shape_exited"]

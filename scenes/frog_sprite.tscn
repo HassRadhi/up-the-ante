@@ -1,8 +1,8 @@
 [gd_scene load_steps=33 format=3 uid="uid://d2qy27kcdtaps"]
 
-[ext_resource type="Texture2D" uid="uid://bix885rjkhj7m" path="res://Assets/Sprites/FrogSlam.png" id="1_slgur"]
-[ext_resource type="Texture2D" uid="uid://bq7xnm7hgtvsx" path="res://Assets/Sprites/FrogPhase2.png" id="2_byod8"]
-[ext_resource type="Texture2D" uid="uid://ccq4oo5ttcfuk" path="res://Assets/Sprites/FrogPhaseChange.png" id="3_j38ec"]
+[ext_resource type="Texture2D" uid="uid://bix885rjkhj7m" path="res://assets/sprites/FrogSlam.png" id="1_slgur"]
+[ext_resource type="Texture2D" uid="uid://bq7xnm7hgtvsx" path="res://assets/sprites/FrogPhase2.png" id="2_byod8"]
+[ext_resource type="Texture2D" uid="uid://ccq4oo5ttcfuk" path="res://assets/sprites/FrogPhaseChange.png" id="3_j38ec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cyyp"]
 atlas = ExtResource("1_slgur")

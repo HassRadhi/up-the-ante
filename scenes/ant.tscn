@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://pvo8vnuwk3o3"]
+
+[ext_resource type="Script" uid="uid://ygqlcoef32hf" path="res://scripts/player/player_movement.gd" id="1_lck3i"]
+[ext_resource type="PackedScene" uid="uid://xmn8f7fubj7n" path="res://scenes/ant_sprite.tscn" id="2_v1j43"]
+[ext_resource type="Script" uid="uid://clxypkdrp33l" path="res://scripts/player/ant_sprite.gd" id="3_bsvr1"]
+[ext_resource type="Script" uid="uid://c7u3dgj55xxfm" path="res://scripts/player/boss_collide.gd" id="4_7nvtx"]
+[ext_resource type="Script" uid="uid://bb7o1r0bq2p10" path="res://scripts/player/camera_2d.gd" id="5_lv1r1"]
+[ext_resource type="PackedScene" uid="uid://dj87s8mntwviv" path="res://scenes/effect_applier.tscn" id="6_1c1h0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db5ec"]
+size = Vector2(0.9606581, 1.0988772)
+
+[node name="Ant" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 14
+script = ExtResource("1_lck3i")
+
+[node name="AntSprite" parent="." instance=ExtResource("2_v1j43")]
+texture_filter = 1
+position = Vector2(0, -12)
+animation = &"AirTime"
+script = ExtResource("3_bsvr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -6.5)
+rotation = -3.1415925
+scale = Vector2(46.84289, -26.390568)
+shape = SubResource("RectangleShape2D_db5ec")
+script = ExtResource("4_7nvtx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("5_lv1r1")
+
+[node name="EffectApplier" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_1c1h0")]
+body = NodePath("..")
+
+[node name="Stun" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="TurnBoost" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Immunity" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_changed" from="AntSprite" to="." method="_on_ant_sprite_animation_changed"]
+[connection signal="animation_finished" from="AntSprite" to="." method="_on_ant_sprite_animation_finished"]
+[connection signal="animation_looped" from="AntSprite" to="." method="_on_ant_sprite_animation_looped"]
+[connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]
+[connection signal="timeout" from="TurnBoost" to="." method="_on_turn_boost_timeout"]
+[connection signal="timeout" from="Immunity" to="EffectApplier" method="_on_immunity_timeout"]

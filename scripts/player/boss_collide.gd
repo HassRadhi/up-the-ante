@@ -8,8 +8,8 @@ func _process(_delta: float) -> void:
 		SignalBus.player_hit.emit()
 		playerTouchingBoss = false
 
-func _on_boss_hurtbox_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _player_entered_boss_hurtbox() -> void:
 	playerTouchingBoss = true
 
-func _on_boss_hurtbox_body_shape_exited(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _player_exited_boss_hurtbox() -> void:
 	playerTouchingBoss = false

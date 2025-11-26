@@ -13,7 +13,6 @@ config_version=5
 config/name="Up the Ante"
 run/main_scene="uid://bh62k3sf7ybnw"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -27,6 +26,10 @@ gdscript/warnings/unused_signal=0
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[global_group]
+
+Player=""
 
 [input]
 
@@ -60,5 +63,6 @@ crouch={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
