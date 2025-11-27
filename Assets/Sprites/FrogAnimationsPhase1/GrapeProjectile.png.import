@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yn7s314o5i08"
-path="res://.godot/imported/Tilemap.png-bb3f108d51dd5af8d5be54b9e84b662a.ctex"
+uid="uid://bxrp1l5u843dv"
+path="res://.godot/imported/GrapeProjectile.png-ea8bfd072c979b590b30ec36e8ab2a57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tilemap.png"
-dest_files=["res://.godot/imported/Tilemap.png-bb3f108d51dd5af8d5be54b9e84b662a.ctex"]
+source_file="res://Assets/Sprites/GrapeProjectile.png"
+dest_files=["res://.godot/imported/GrapeProjectile.png-ea8bfd072c979b590b30ec36e8ab2a57.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yn7s314o5i08"
-path="res://.godot/imported/Tilemap.png-bb3f108d51dd5af8d5be54b9e84b662a.ctex"
+uid="uid://c2jprkkhbtnpm"
+path="res://.godot/imported/FrogGrapeReload.png-dc2f941cf9108c9ec0c8492c31f129ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tilemap.png"
-dest_files=["res://.godot/imported/Tilemap.png-bb3f108d51dd5af8d5be54b9e84b662a.ctex"]
+source_file="res://Assets/Sprites/FrogGrapeReload.png"
+dest_files=["res://.godot/imported/FrogGrapeReload.png-dc2f941cf9108c9ec0c8492c31f129ff.ctex"]
 
 [params]
 
