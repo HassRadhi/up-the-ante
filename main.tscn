@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=17 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://scenes/ant.tscn" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://assets/world_tileset.png" id="3_h2yge"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://scripts/states/enemy_stomp.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://scripts/states/state_machine.gd" id="8_kek77"]
 [ext_resource type="Script" uid="uid://cgvkvccw0uuri" path="res://scripts/ui/trick_notifier.gd" id="9_4c57u"]
-[ext_resource type="PackedScene" uid="uid://b615tljaa8yx1" path="res://scenes/letters_numbers.tscn" id="14_vivmo"]
 [ext_resource type="PackedScene" uid="uid://d2qy27kcdtaps" path="res://scenes/frog_sprite.tscn" id="14_w48qg"]
 [ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://assets/sprites/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="15_2cqfq"]
 
@@ -256,9 +255,6 @@ shape = SubResource("RectangleShape2D_4c57u")
 [node name="Stomp" parent="KermitSupreme" instance=ExtResource("7_4c57u")]
 position = Vector2(101, 353)
 
-[node name="Letters_Numbers" parent="." instance=ExtResource("14_vivmo")]
-position = Vector2(149, -77)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TrickNotifier" type="Control" parent="CanvasLayer"]
@@ -284,6 +280,7 @@ uppercase = true
 one_shot = true
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
+[connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
 [connection signal="landed" from="KermitSupreme/EnemyStomp" to="KermitSupreme/Stomp" method="_on_enemy_stomp_landed"]
 [connection signal="body_shape_entered" from="KermitSupreme/BossHurtbox" to="Ant" method="_on_boss_hurtbox_body_shape_entered"]
 [connection signal="body_shape_exited" from="KermitSupreme/BossHurtbox" to="Ant" method="_on_boss_hurtbox_body_shape_exited"]

@@ -12,7 +12,7 @@ func _ready() -> void:
 func _apply_hit_affect() -> void:
 	if !immune:
 		SignalBus.stun_player.emit()
-		body.velocity = Vector2(500,-150)
+		body.velocity = Vector2(1200,-150)
 	
 	else:
 		iframes.start()

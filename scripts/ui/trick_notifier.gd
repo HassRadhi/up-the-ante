@@ -13,13 +13,31 @@ var combo = 1
 var offsetIndex = 0
 
 func _on_ant_airtime_success() -> void:
-	if lastTrick != Utils.Tricks.Airtime:
-		lastTrick = Utils.Tricks.Airtime
+	var playerRotate = Locator.get_player().get_node("AntSprite").rotation
+	var reverse = abs(playerRotate) < deg_to_rad(200) and abs(playerRotate) > deg_to_rad(160)
+	if reverse:
+		_handle_combo(Utils.Tricks.ReverseAirtime)
+		_display_text("REVERSE AIRTIME")
+	else:
+		_handle_combo(Utils.Tricks.Airtime)
+		_display_text("AIRTIME")
+	
+func _handle_combo(trick : Utils.Tricks):
+	if lastTrick != trick:
+		lastTrick = trick
 		combo = 1
 	elif comboTimer.time_left > 0:
 		combo += 1
 	comboTimer.start()
-	_display_text("AIRTIME")
+
+func _on_ant_flip_success() -> void:
+	if lastTrick != Utils.Tricks.Flip:
+		lastTrick = Utils.Tricks.Flip
+		combo = 1
+	elif comboTimer.time_left > 0:
+		combo += 1
+	comboTimer.start()
+	_display_text("FLIP")
 
 func _display_text(text: String):
 	var label = _create_label()

@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dj87s8mntwviv" path="res://scenes/effect_applier.tscn" id="6_1c1h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db5ec"]
-size = Vector2(0.9606581, 1.0988772)
+size = Vector2(0.23482758, 1.5914778)
 
 [node name="Ant" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 14
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_snap_length = 64.0
 script = ExtResource("1_lck3i")
 
 [node name="AntSprite" parent="." instance=ExtResource("2_v1j43")]
@@ -21,14 +25,14 @@ animation = &"AirTime"
 script = ExtResource("3_bsvr1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-0.5, -6.5)
+position = Vector2(-0.49999973, -14)
 rotation = -3.1415925
 scale = Vector2(46.84289, -26.390568)
 shape = SubResource("RectangleShape2D_db5ec")
 script = ExtResource("4_7nvtx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 1.0799992)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("5_lv1r1")
@@ -48,7 +52,6 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[connection signal="animation_changed" from="AntSprite" to="." method="_on_ant_sprite_animation_changed"]
 [connection signal="animation_finished" from="AntSprite" to="." method="_on_ant_sprite_animation_finished"]
 [connection signal="animation_looped" from="AntSprite" to="." method="_on_ant_sprite_animation_looped"]
 [connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]

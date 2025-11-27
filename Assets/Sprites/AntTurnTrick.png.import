@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvxmw11u8xong"
-path="res://.godot/imported/AntTurnTrick.png-a7054daacb7546fa04d15e43d519aeb2.ctex"
+path="res://.godot/imported/AntTurnTrick.png-052dbcb7a93aa9b0679ee10992848de5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/AntTurnTrick.png"
-dest_files=["res://.godot/imported/AntTurnTrick.png-a7054daacb7546fa04d15e43d519aeb2.ctex"]
+source_file="res://assets/sprites/AntTurnTrick.png"
+dest_files=["res://.godot/imported/AntTurnTrick.png-052dbcb7a93aa9b0679ee10992848de5.ctex"]
 
 [params]
 

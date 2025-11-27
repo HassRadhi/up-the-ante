@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dpeqdkkiq1ko6"
-path="res://.godot/imported/PixelifySans-Regular.ttf-54a2928a47a33b164f75ada920156b4d.fontdata"
+path="res://.godot/imported/PixelifySans-Regular.ttf-d697822d9f021c96848cd74807d12fa9.fontdata"
 
 [deps]
 
-source_file="res://Assets/Sprites/Pixelify_Sans/static/PixelifySans-Regular.ttf"
-dest_files=["res://.godot/imported/PixelifySans-Regular.ttf-54a2928a47a33b164f75ada920156b4d.fontdata"]
+source_file="res://assets/sprites/Pixelify_Sans/static/PixelifySans-Regular.ttf"
+dest_files=["res://.godot/imported/PixelifySans-Regular.ttf-d697822d9f021c96848cd74807d12fa9.fontdata"]
 
 [params]
 

@@ -1,7 +1,7 @@
 extends Node
 
 # ENUMS
-enum Tricks { Airtime, Turn, None }
+enum Tricks { Airtime, ReverseAirtime, Turn, Flip, None }
 
 # FUNCTIONS
 func sleep(sec):
