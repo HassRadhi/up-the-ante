@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccq4oo5ttcfuk"
-path="res://.godot/imported/FrogPhaseChange.png-faf6fbe41aef2540f427214cb5a2f538.ctex"
+path="res://.godot/imported/FrogPhaseChange.png-85b4ec58ba0676701eb5c4c68a48c71c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/FrogPhaseChange.png"
-dest_files=["res://.godot/imported/FrogPhaseChange.png-faf6fbe41aef2540f427214cb5a2f538.ctex"]
+source_file="res://Assets/Sprites/FrogAnimationsPhase2/FrogPhaseChange.png"
+dest_files=["res://.godot/imported/FrogPhaseChange.png-85b4ec58ba0676701eb5c4c68a48c71c.ctex"]
 
 [params]
 

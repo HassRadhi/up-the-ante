@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxrp1l5u843dv"
-path="res://.godot/imported/GrapeProjectile.png-ea8bfd072c979b590b30ec36e8ab2a57.ctex"
+path="res://.godot/imported/GrapeProjectile.png-bf24a8ab8f9ad8655f52364c3af647c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/GrapeProjectile.png"
-dest_files=["res://.godot/imported/GrapeProjectile.png-ea8bfd072c979b590b30ec36e8ab2a57.ctex"]
+source_file="res://Assets/Sprites/FrogAnimationsPhase1/GrapeProjectile.png"
+dest_files=["res://.godot/imported/GrapeProjectile.png-bf24a8ab8f9ad8655f52364c3af647c1.ctex"]
 
 [params]
 

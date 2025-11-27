@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://brndj61yah8jb"]
+
+[ext_resource type="Texture2D" uid="uid://cljwv7d2tg00k" path="res://Assets/Sprites/NPCAnimations/MushroomNPC.png" id="1_fm85y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7oib"]
+atlas = ExtResource("1_fm85y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsmro"]
+atlas = ExtResource("1_fm85y")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76hgm"]
+atlas = ExtResource("1_fm85y")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi6qn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7oib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsmro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76hgm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="MushRoom" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mi6qn")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 2
+frame_progress = 0.84876156
