@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		var crest_launch = (
 			wasOnFloor
 			and velocity.y < 40.0
-			and angle_change > 40.0
+			and angle_change > 25.0
 		)
 
 		if !crest_launch:
