@@ -9,10 +9,13 @@ const ACCELERATION = 8
 const FRICTION = 1
 const DRAG = 0.5
 const FLIP_SPEED = 7
+const GROUND_SPEED_THRESHOLD = 3000.0
+
 var speedMult = 1.0
 var coyote_time = 0.15
 var coyote_timer = 0.0
 var last_floor_normal = null
+
 
 @onready var stunTimer = $Stun
 @onready var sprite = $AntSprite
@@ -34,8 +37,28 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	var wasOnFloor = isOnFloor
-	isOnFloor = is_on_floor()
+	
+	var new_floor = false
 
+	if is_on_floor():
+		var normal = get_floor_normal()
+		var angle_change = 0.0
+
+		if last_floor_normal != null:
+			angle_change = rad_to_deg(acos(clamp(last_floor_normal.dot(normal), -1, 1)))
+
+		var crest_launch = (
+			wasOnFloor
+			and velocity.y < 40.0
+			and angle_change > 40.0
+		)
+
+		if !crest_launch:
+			new_floor = true
+
+	isOnFloor = new_floor
+
+	
 	# store valid normal while grounded
 	if isOnFloor:
 		last_floor_normal = get_floor_normal()
@@ -53,7 +76,7 @@ func _physics_process(delta: float) -> void:
 
 		# project speed onto tangent
 		var angle = rad_to_deg(acos(last_floor_normal.dot(Vector2.UP)))
-		var ramp_factor = clamp(angle / 40.0, 0.0, 1.0)  # 0°→0, 40°→1
+		var ramp_factor = clamp(angle / 40.0, 0.0, 1.0)
 		var horizontal_speed = abs(velocity.x)
 		velocity = t * (horizontal_speed * ramp_factor + horizontal_speed * (1.0 - ramp_factor) * 0.5)
 	
