@@ -16,9 +16,9 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-SignalBus="*res://scripts/globals/signal_bus.gd"
-Utils="*res://scripts/globals/utils.gd"
-Locator="*res://scripts/globals/locator.gd"
+SignalBus="*res://Scripts/Globals/signal_bus.gd"
+Utils="*res://Scripts/Globals/utils.gd"
+Locator="*res://Scripts/Globals/locator.gd"
 SceneTransition="*res://scene_transition.tscn"
 
 [debug]

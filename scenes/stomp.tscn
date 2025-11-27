@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://o5qntbo4uhww"]
 
-[ext_resource type="Script" uid="uid://b15aeojpun2hf" path="res://scripts/bosses/kermit/stomp.gd" id="1_2hta0"]
-[ext_resource type="PackedScene" uid="uid://c2i57tewpx0y3" path="res://scenes/smoke.tscn" id="2_2hta0"]
-[ext_resource type="Script" uid="uid://bvdsjlgthkodk" path="res://scripts/bosses/kermit/stomp_collision.gd" id="3_lediw"]
+[ext_resource type="Script" uid="uid://b15aeojpun2hf" path="res://Scripts/Bosses/Kermit/stomp.gd" id="1_2hta0"]
+[ext_resource type="PackedScene" uid="uid://c2i57tewpx0y3" path="res://Scenes/smoke.tscn" id="2_2hta0"]
+[ext_resource type="Script" uid="uid://bvdsjlgthkodk" path="res://Scripts/Bosses/Kermit/stomp_collision.gd" id="3_lediw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hta0"]
 size = Vector2(20.386475, 20)
