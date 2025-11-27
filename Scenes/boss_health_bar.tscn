@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh5syvsrjurhm"]
+
+[ext_resource type="Texture2D" uid="uid://duyxqa5cndh7h" path="res://Assets/Sprites/FrogHealthBar-Sheet.png" id="1_b4i8v"]
+[ext_resource type="Script" uid="uid://b1lp1o7hrr524" path="res://Scenes/boss_health_bar.gd" id="1_m6tp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6tp3"]
+atlas = ExtResource("1_b4i8v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oivh"]
+atlas = ExtResource("1_b4i8v")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lf7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6tp3")
+}],
+"loop": true,
+"name": &"frog_phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oivh")
+}],
+"loop": true,
+"name": &"frog_phase2",
+"speed": 5.0
+}]
+
+[node name="BossHealthBar" type="Node2D"]
+script = ExtResource("1_m6tp3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6lf7f")
+animation = &"frog_phase1"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.7683856, 3.8767557e-06, 6.5522636e-07, 1)
+offset_left = -22.999996
+offset_top = -2.0
+offset_right = -18.999996
+offset_bottom = 25.1
+rotation = 1.5707964
+scale = Vector2(-1.0170004, -1.7)
+step = 1.0
+show_percentage = false

@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		var n = last_floor_normal
 		var t = Vector2(n.y, -n.x).normalized()
 
-		# ensure tangent matches your movement direction
+		# ensure tangent matches movement direction
 		if velocity.x != 0:
 			var dir = Vector2.RIGHT if velocity.x > 0 else Vector2.LEFT
 			if t.dot(dir) < 0:
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		var ramp_factor = clamp(angle / 40.0, 0.0, 1.0)  # 0°→0, 40°→1
 		var horizontal_speed = abs(velocity.x)
 		velocity = t * (horizontal_speed * ramp_factor + horizontal_speed * (1.0 - ramp_factor) * 0.5)
-	# Add the gravity.
+	
 	if not isOnFloor:
 		velocity += get_gravity() * delta
 		isGrounded = false
@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		if get_slide_collision_count() > 0: 
 			var tween = create_tween() 
 			var floorangle = atan2(get_last_slide_collision().get_normal().x, -get_last_slide_collision().get_normal().y) 
-			if (abs(floorangle) < abs(rotation) and rotation < 0): 
+			if (abs(floorangle) < abs(sprite.rotation) and sprite.rotation < 0): 
 				tween.tween_property(sprite, "rotation", floorangle, 0.4) 
 			else: 
 				tween.tween_property(sprite, "rotation", floorangle, 0.2)

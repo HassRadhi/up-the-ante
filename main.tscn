@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=18 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://Scenes/ant.tscn" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://Assets/world_tileset.png" id="3_h2yge"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://Scripts/States/enemy_stomp.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://Scripts/States/state_machine.gd" id="8_kek77"]
 [ext_resource type="Script" uid="uid://cgvkvccw0uuri" path="res://Scripts/UI/trick_notifier.gd" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bh5syvsrjurhm" path="res://Scenes/boss_health_bar.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d2qy27kcdtaps" path="res://Scenes/frog_sprite.tscn" id="14_w48qg"]
 [ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="15_2cqfq"]
 
@@ -278,6 +279,10 @@ uppercase = true
 
 [node name="SameCombo" type="Timer" parent="CanvasLayer/TrickNotifier"]
 one_shot = true
+
+[node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("10_4c57u")]
+position = Vector2(569, 76.00001)
+scale = Vector2(10.710908, 6.34794)
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
