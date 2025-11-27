@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c20nv0nye5lwt"
-path="res://.godot/imported/FrogGrapeReload2.png-e0659018ebde0b1663f89006fb17d0fa.ctex"
+uid="uid://cjkn0b0d31qf5"
+path="res://.godot/imported/ToungeAttackProjectile.png-47c079a8d4f68dc6cec20bb81110408d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/FrogAnimationsPhase2/FrogGrapeReload2.png"
-dest_files=["res://.godot/imported/FrogGrapeReload2.png-e0659018ebde0b1663f89006fb17d0fa.ctex"]
+source_file="res://Assets/Sprites/FrogAnimationsPhase2/ToungeAttackProjectile.png"
+dest_files=["res://.godot/imported/ToungeAttackProjectile.png-47c079a8d4f68dc6cec20bb81110408d.ctex"]
 
 [params]
 

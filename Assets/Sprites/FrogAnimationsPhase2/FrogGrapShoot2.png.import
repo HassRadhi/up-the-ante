@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmx1j327qgc7c"
-path="res://.godot/imported/FrogGrapShoot2.png-bf14e22aa2c21d36387a6d098a17b9b3.ctex"
+path="res://.godot/imported/FrogGrapShoot2.png-a9f6fb91be13d60616e4f635c4b682ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/FrogGrapShoot2.png"
-dest_files=["res://.godot/imported/FrogGrapShoot2.png-bf14e22aa2c21d36387a6d098a17b9b3.ctex"]
+source_file="res://Assets/Sprites/FrogAnimationsPhase2/FrogGrapShoot2.png"
+dest_files=["res://.godot/imported/FrogGrapShoot2.png-a9f6fb91be13d60616e4f635c4b682ab.ctex"]
 
 [params]
 

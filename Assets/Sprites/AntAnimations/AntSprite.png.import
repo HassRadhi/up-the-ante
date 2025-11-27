@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clxrb2rdjgjs2"
-path="res://.godot/imported/AntSprite.png-084a5841a81a107c28088c6d7f2ffc55.ctex"
+uid="uid://c8sby2yhcgt1s"
+path="res://.godot/imported/AntSprite.png-343b655836ebe6ea296c75441221d6ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/AntSprite.png"
-dest_files=["res://.godot/imported/AntSprite.png-084a5841a81a107c28088c6d7f2ffc55.ctex"]
+source_file="res://Assets/Sprites/AntAnimations/AntSprite.png"
+dest_files=["res://.godot/imported/AntSprite.png-343b655836ebe6ea296c75441221d6ef.ctex"]
 
 [params]
 
