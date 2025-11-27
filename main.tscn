@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bh62k3sf7ybnw"]
+[gd_scene load_steps=19 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://Scenes/ant.tscn" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://Assets/world_tileset.png" id="3_h2yge"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://scripts/states/enemy_stomp.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://scripts/states/state_machine.gd" id="8_kek77"]
 [ext_resource type="Script" uid="uid://cgvkvccw0uuri" path="res://scripts/ui/trick_notifier.gd" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://dfjna76a6tas5" path="res://scene_transition.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://b615tljaa8yx1" path="res://Scenes/letters_numbers.tscn" id="14_vivmo"]
 [ext_resource type="PackedScene" uid="uid://d2qy27kcdtaps" path="res://Scenes/frog_sprite.tscn" id="14_w48qg"]
 [ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="15_2cqfq"]
@@ -282,6 +283,8 @@ uppercase = true
 
 [node name="SameCombo" type="Timer" parent="CanvasLayer/TrickNotifier"]
 one_shot = true
+
+[node name="Scene_transition" parent="." instance=ExtResource("11_efxa6")]
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="landed" from="KermitSupreme/EnemyStomp" to="KermitSupreme/Stomp" method="_on_enemy_stomp_landed"]
