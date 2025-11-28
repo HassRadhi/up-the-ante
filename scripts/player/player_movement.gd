@@ -6,7 +6,7 @@ signal flip_success
 const SPEED = 300.0
 const JUMP_VELOCITY = -150.0
 const ACCELERATION = 8
-const FRICTION = 1
+const FRICTION = 0.75
 const DRAG = 0.5
 const FLIP_SPEED = 7
 const GROUND_SPEED_THRESHOLD = 3000.0
@@ -49,8 +49,8 @@ func _physics_process(delta: float) -> void:
 
 		var crest_launch = (
 			wasOnFloor
-			and velocity.y < 40.0
-			and angle_change > 25.0
+			and velocity.y < 400.0
+			and angle_change > 45.0
 		)
 
 		if !crest_launch:
@@ -79,6 +79,7 @@ func _physics_process(delta: float) -> void:
 		var ramp_factor = clamp(angle / 40.0, 0.0, 1.0)
 		var horizontal_speed = abs(velocity.x)
 		velocity = t * (horizontal_speed * ramp_factor + horizontal_speed * (1.0 - ramp_factor) * 0.5)
+		velocity.y *= 0.75
 	
 	if not isOnFloor:
 		velocity += get_gravity() * delta
