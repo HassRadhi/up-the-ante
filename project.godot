@@ -33,6 +33,10 @@ enabled=PackedStringArray()
 
 Player=""
 
+[gui]
+
+theme/custom="uid://d0rn6f6wsx0fg"
+
 [input]
 
 move_left={

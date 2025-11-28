@@ -12,8 +12,8 @@ const FLIP_SPEED = 7
 const GROUND_SPEED_THRESHOLD = 3000.0
 
 var speedMult = 1.0
-var coyote_time = 0.15
-var coyote_timer = 0.0
+var ground_coyote_time := 0.08
+var ground_coyote_timer := 0.0
 var last_floor_normal = null
 
 
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		var crest_launch = (
 			wasOnFloor
 			and velocity.y < 40.0
-			and angle_change > 25.0
+			and angle_change > 45.0
 		)
 
 		if !crest_launch:
@@ -195,7 +195,6 @@ func _on_ant_sprite_animation_finished() -> void:
 func _on_ant_sprite_animation_looped() -> void:
 	match sprite.animation:
 		"AirTime":
-			
 			airtime_success.emit()
 
 func _attempt_to_turn() -> void:

@@ -281,8 +281,8 @@ uppercase = true
 one_shot = true
 
 [node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("10_4c57u")]
-position = Vector2(569, 76.00001)
-scale = Vector2(10.710908, 6.34794)
+position = Vector2(569.00006, 629)
+scale = Vector2(6, 6)
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
