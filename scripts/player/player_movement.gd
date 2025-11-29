@@ -37,14 +37,6 @@ func _physics_process(delta: float) -> void:
 	var wasOnFloor = isOnFloor
 	
 	var new_floor = false
-
-	if isStunned:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-			isGrounded = false
-		move_and_slide()
-		return
-	
 	if is_on_floor():
 		var normal = get_floor_normal()
 		var angle_change = 0.0
@@ -62,12 +54,18 @@ func _physics_process(delta: float) -> void:
 			new_floor = true
 
 	isOnFloor = new_floor
-
 	
-	# store valid normal while grounded
-	if isOnFloor:
+	if !isOnFloor:
+		velocity += get_gravity() * delta
+		isGrounded = false
+	else:
 		jumping = false
+		airtiming = false
 		last_floor_normal = get_floor_normal()
+		
+	if isStunned:
+		move_and_slide()
+		return
 
 	# momentum projection after leaving ramp
 	if wasOnFloor and !isOnFloor and !jumping:
@@ -87,23 +85,18 @@ func _physics_process(delta: float) -> void:
 		velocity = t * (horizontal_speed * ramp_factor + horizontal_speed * (1.0 - ramp_factor) * 0.5)
 		velocity.y *= 0.5
 	
-	if not isOnFloor:
-		velocity += get_gravity() * delta
-		isGrounded = false
-
-	if isStunned:
-		move_and_slide()
-		return
-	
 	update_animation()
+	
 	# Handle floor actions
 	if isOnFloor:
-		if get_slide_collision_count() > 0: 
-			var tween = create_tween() 
-			var floorangle = atan2(get_last_slide_collision().get_normal().x, -get_last_slide_collision().get_normal().y) 
-			if (abs(floorangle) < abs(sprite.rotation) and sprite.rotation < 0): 
-				tween.tween_property(sprite, "rotation", floorangle, 0.4) 
-			else: 
+		var col = get_last_slide_collision()
+		if col and col.get_normal().dot(Vector2.UP) > 0.7:
+			var tween = create_tween()
+			var floorangle = atan2(col.get_normal().x, -col.get_normal().y)
+
+			if abs(floorangle) < abs(sprite.rotation) and sprite.rotation < 0:
+				tween.tween_property(sprite, "rotation", floorangle, 0.4)
+			else:
 				tween.tween_property(sprite, "rotation", floorangle, 0.2)
 				
 		var normal = get_floor_normal()
@@ -125,7 +118,6 @@ func _physics_process(delta: float) -> void:
 			isGrounded = true
 			sprite.play("Landing")
 			landing = true
-			airtiming = false
 	
 	if airtiming or turning:
 		move_and_slide()
@@ -147,10 +139,11 @@ func _physics_process(delta: float) -> void:
 		if oldFacing != facingRight:
 			_attempt_to_turn()
 		
-		if !isOnFloor:
+		if !isOnFloor and !airtiming:
 			if abs(sprite.rotation + direction * FLIP_SPEED * delta) >= deg_to_rad(360):
 				flip_success.emit()
 			sprite.rotation = fmod(sprite.rotation + direction * FLIP_SPEED * delta, deg_to_rad(360))
+			
 
 	move_and_slide()
 
@@ -167,10 +160,10 @@ func update_animation() -> void:
 	if (!turning):
 		sprite.flip_h = !facingRight
 	
-	if velocity.y < -5 or !isOnFloor:
+	if !isOnFloor:
 		turning = false
 		# If in the air
-		if sprite.animation != "AirTime" && !jumping:
+		if sprite.animation != "AirTime" && !jumping && Input.is_action_pressed("jump"):
 			airtiming = true
 			sprite.play("AirTime")
 		if airtiming && !Input.is_action_pressed("jump"):

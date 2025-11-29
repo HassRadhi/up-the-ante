@@ -44,9 +44,8 @@ scale = Vector2(2.675, 0.22)
 theme = ExtResource("2_1oivh")
 step = 0.1
 value = 100.0
-show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_6lf7f")
-animation = &"frog_phase1"
+animation = &"frog_phase2"

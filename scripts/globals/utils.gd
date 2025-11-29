@@ -1,8 +1,8 @@
 extends Node
 
 # ENUMS
-enum Tricks { Airtime, ReverseAirtime, Turn, Flip, None }
 
-# FUNCTIONS
+	
+# FUNCTION
 func sleep(sec):
 	await get_tree().create_timer(sec).timeout

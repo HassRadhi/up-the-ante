@@ -20,6 +20,7 @@ SignalBus="*res://Scripts/Globals/signal_bus.gd"
 Utils="*res://Scripts/Globals/utils.gd"
 Locator="*res://Scripts/Globals/locator.gd"
 SceneTransition="*res://scene_transition.tscn"
+TrickHandler="*res://Scripts/Globals/trick_handler.gd"
 
 [debug]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://ujdb84tjdfe7"]
+[gd_scene load_steps=7 format=4 uid="uid://ujdb84tjdfe7"]
 
 [ext_resource type="Texture2D" uid="uid://yn7s314o5i08" path="res://Assets/Sprites/Tilemap.png" id="1_n0r23"]
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://Scenes/ant.tscn" id="2_f73l8"]
-[ext_resource type="Script" uid="uid://cgvkvccw0uuri" path="res://Scripts/UI/trick_notifier.gd" id="3_7gbdd"]
-[ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="4_8fg1o"]
+[ext_resource type="PackedScene" uid="uid://cmj4y3xg1dn27" path="res://Scenes/trick_notifier.tscn" id="3_g1tsu"]
 [ext_resource type="PackedScene" uid="uid://brndj61yah8jb" path="res://Scenes/mush_room.tscn" id="5_radqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enova"]
@@ -82,22 +81,9 @@ texture = ExtResource("1_n0r23")
 3:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_doswx"]
-physics_layer_0/collision_layer = 0
+physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_enova")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfpqr"]
-size = Vector2(337.2657, 73.15485)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_01cnw"]
-points = PackedVector2Array(1.1170225, 7.741333, 2.0926533, -1.8921814, 0.3496971, -7.431877)
-
-[sub_resource type="LabelSettings" id="LabelSettings_5e170"]
-font = ExtResource("4_8fg1o")
-font_size = 35
-font_color = Color(0.8666667, 0.3764706, 0.03529412, 1)
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Spawn" type="Node2D"]
 texture_filter = 1
@@ -109,89 +95,16 @@ tile_map_data = PackedByteArray("AAAAAP//AQADAAAAAAABAP//AQADAAAAAAACAP//AQADAAA
 tile_set = SubResource("TileSet_doswx")
 
 [node name="Ant" parent="." instance=ExtResource("2_f73l8")]
-position = Vector2(228.5, -249.5)
+position = Vector2(160, -50)
 floor_constant_speed = false
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(335, -69.5)
-rotation = 0.48297495
-scale = Vector2(1.3519098, 1.3891493)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-22.5, -255.50002)
-rotation = 0.48297495
-scale = Vector2(1.3519098, 1.3891493)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(684, -7.000004)
-rotation = 0.023717195
-scale = Vector2(1.3519098, 1.3891493)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(502.50003, -36.500004)
-rotation = 0.21630457
-scale = Vector2(1.251814, 0.91255355)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1588.0001, -325.99997)
-scale = Vector2(-1.5877125, -1.2419544)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(893, -63.000015)
-rotation = -0.25569233
-scale = Vector2(1.3519098, 1.3891493)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1076.9999, -166.00003)
-rotation = -0.50695086
-scale = Vector2(1.3519098, 1.3891493)
-shape = SubResource("RectangleShape2D_jfpqr")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1145.4999, -194.00006)
-rotation = -0.74778265
-scale = Vector2(120.0066, 5.929599)
-shape = SubResource("ConvexPolygonShape2D_01cnw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TrickNotifier" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_7gbdd")
-
-[node name="PlaceholderLabel" type="Label" parent="CanvasLayer/TrickNotifier"]
-visible = false
-layout_mode = 0
-offset_left = 284.0
-offset_top = -235.0
-offset_right = 676.0
-offset_bottom = -192.0
-text = "Placeholder Text"
-label_settings = SubResource("LabelSettings_5e170")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="SameCombo" type="Timer" parent="CanvasLayer/TrickNotifier"]
-one_shot = true
+[node name="TrickNotifier" parent="CanvasLayer" instance=ExtResource("3_g1tsu")]
 
 [node name="MushRoom" parent="." instance=ExtResource("5_radqe")]
 position = Vector2(1331.5, -202.5)
 scale = Vector2(2, 2)
-frame_progress = 0.4782281
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
-[connection signal="timeout" from="CanvasLayer/TrickNotifier/SameCombo" to="CanvasLayer/TrickNotifier" method="_on_same_combo_timeout"]
