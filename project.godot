@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Up the Ante"
-run/main_scene="uid://bh62k3sf7ybnw"
+run/main_scene="uid://dmv7704ml4s02"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
@@ -66,6 +66,7 @@ crouch={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="floor"
 2d_physics/layer_4="wall"
+2d_physics/layer_5="obstacles"
 
 [physics]
 

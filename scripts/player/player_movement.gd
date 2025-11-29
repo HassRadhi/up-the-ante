@@ -12,8 +12,6 @@ const FLIP_SPEED = 7
 const GROUND_SPEED_THRESHOLD = 3000.0
 
 var speedMult = 1.0
-var ground_coyote_time := 0.08
-var ground_coyote_timer := 0.0
 var last_floor_normal = null
 
 
@@ -40,6 +38,13 @@ func _physics_process(delta: float) -> void:
 	
 	var new_floor = false
 
+	if isStunned:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+			isGrounded = false
+		move_and_slide()
+		return
+	
 	if is_on_floor():
 		var normal = get_floor_normal()
 		var angle_change = 0.0
@@ -61,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	
 	# store valid normal while grounded
 	if isOnFloor:
+		jumping = false
 		last_floor_normal = get_floor_normal()
 
 	# momentum projection after leaving ramp
@@ -84,8 +90,6 @@ func _physics_process(delta: float) -> void:
 	if not isOnFloor:
 		velocity += get_gravity() * delta
 		isGrounded = false
-		var tween = create_tween()
-		tween.tween_property(self, "rotation", 0, 0.4)
 
 	if isStunned:
 		move_and_slide()
@@ -150,8 +154,9 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _on_stun():
+func _on_stun(duration : float = 0.5):
 	isStunned = true
+	stunTimer.wait_time = duration
 	stunTimer.start()
 	sprite.stop()
 

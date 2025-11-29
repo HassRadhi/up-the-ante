@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://brndj61yah8jb"]
 
-[ext_resource type="Script" uid="uid://0okhkjflj32s" path="res://Scripts/Obstacles/mush_room.gd" id="1_d7oib"]
+[ext_resource type="Script" uid="uid://0okhkjflj32s" path="res://Scenes/mush_room.gd" id="1_d7oib"]
 [ext_resource type="Texture2D" uid="uid://cljwv7d2tg00k" path="res://Assets/Sprites/NPCAnimations/MushroomNPC.png" id="1_fm85y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm85y"]
@@ -50,12 +50,11 @@ frame = 2
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1.7405928, -0.45784417)
+scale = Vector2(1.239998, -0.36000025)
 shape = SubResource("CapsuleShape2D_mi6qn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2.1083553, 0.4815515)
+scale = Vector2(3.9378374, 1.0276473)
 shape = SubResource("CapsuleShape2D_lsmro")
-disabled = true
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
