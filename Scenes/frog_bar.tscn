@@ -1,0 +1,174 @@
+[gd_scene load_steps=20 format=3 uid="uid://buqj7x04o3bvc"]
+
+[ext_resource type="Texture2D" uid="uid://dual0pnxktmkk" path="res://Assets/Sprites/FrogAnimationsPhase1/frog_getting_hit1.png" id="1_ljumh"]
+[ext_resource type="Texture2D" uid="uid://uwqbccqjqhun" path="res://Assets/Sprites/FrogAnimationsPhase1/frog_getting_hit2.png" id="2_q00w3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2lb0"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4irli"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7po37"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2bf3"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lydat"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3n8r"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoow2"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hb23"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbiy"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tic7w"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljumh"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q00w3"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfqi6"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgemp"]
+atlas = ExtResource("1_ljumh")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cyrv"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo1tc"]
+atlas = ExtResource("2_q00w3")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qm33f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2lb0")
+}],
+"loop": true,
+"name": &"Hit2Phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4irli")
+}],
+"loop": true,
+"name": &"Hit2Phase2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7po37")
+}],
+"loop": true,
+"name": &"Hit3Phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2bf3")
+}],
+"loop": true,
+"name": &"Hit3Phase2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lydat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3n8r")
+}],
+"loop": true,
+"name": &"Idle1Phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoow2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hb23")
+}],
+"loop": true,
+"name": &"Idle1Phase2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhbiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tic7w")
+}],
+"loop": true,
+"name": &"Idle2Phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljumh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q00w3")
+}],
+"loop": true,
+"name": &"Idle2Phase2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfqi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgemp")
+}],
+"loop": true,
+"name": &"Idle3Phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cyrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo1tc")
+}],
+"loop": true,
+"name": &"Idle3Phase2",
+"speed": 5.0
+}]
+
+[node name="FrogBar" type="AnimatedSprite2D"]
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_qm33f")
+animation = &"Hit2Phase1"

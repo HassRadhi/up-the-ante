@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://gqx2pmh20nst"]
+
+[ext_resource type="Texture2D" uid="uid://d22skpm70g5g" path="res://Assets/Sprites/looping_background.png" id="1_pcird"]
+
+[node name="Background" type="Node2D"]
+
+[node name="Parallax2D" type="ParallaxBackground" parent="."]
+follow_viewport_scale = 186.567
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 3
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(3585, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer"]
+modulate = Color(1.7602391, 1.7602391, 1.7602391, 0.6039216)
+position = Vector2(1797, -19.999998)
+scale = Vector2(5, 5)
+texture = ExtResource("1_pcird")

@@ -240,4 +240,4 @@ animations = [{
 
 [node name="Frog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6buye")
-animation = &"FallingChange"
+animation = &"FaceTurn"
