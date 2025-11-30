@@ -17,18 +17,18 @@ var timer := Timer.new()
 var jumping = false
 var leapCount = 0
 var onPlayer = true
-var transitioning = true
+var transitioning = false
 
 func _ready():
 	add_child(timer)
-	timer.wait_time = 4.0
+	timer.wait_time = 3
+	timer.one_shot = true
 	timer.timeout.connect(_on_timer_timeout)
 
 func enter():
 	BossHandler.sprite.play("TurnAway")
 	leapCount = 0
 	_leap()
-	timer.start()
 
 func exit():
 	timer.stop()
@@ -51,7 +51,9 @@ func physics_update(delta: float):
 		enemy.velocity += enemy.get_gravity() * delta * 5
 	
 	if enemy.velocity.y > 0 and groundRay.is_colliding():
-		
+		if transitioning:
+			BossHandler.sprite.play("FallingChange")
+			
 		var hitPoint = groundRay.get_collision_point()
 		var origin = groundRay.global_position
 
@@ -66,13 +68,34 @@ func physics_update(delta: float):
 		attackIndicator.visible = false
 	
 	if enemy.is_on_floor():
+		if timer.time_left == 0:
+			timer.start()
 		enemy.velocity.x = 0
 		# Handle hitting ground
 		if !isGrounded:
 			isGrounded = true
 			SignalBus.shake_camera.emit()
 			landed.emit()
-			BossHandler.sprite.play("FaceTurn")
+			
+			if transitioning:
+				BossHandler.sprite.play("SittingChange")
+				BossHandler.phase2 = true
+				transitioning = false
+				timer.wait_time = 2
+				await BossHandler.sprite.animation_finished
+				BossHandler.sprite.play("TurnAway2")
+				await BossHandler.sprite.animation_finished
+			
+			if BossHandler.health <= 30.0 and BossHandler.health > 10:
+				timer.wait_time = 1.0
+			elif BossHandler.health <= 10.0:
+				timer.wait_time = 0.5
+				
+			if BossHandler.phase2:
+				BossHandler.sprite.play("FaceTurn2")
+			else:
+				BossHandler.sprite.play("FaceTurn")
+				
 			BossHandler.end_boss_attack.emit()
 			
 			if BossHandler.health <= 50.0 and !BossHandler.phase2:
@@ -103,7 +126,6 @@ func _on_timer_timeout() -> void:
 	_leap()
 	
 func _leap():
-	
 	if enemy.is_on_floor():
 		BossHandler.start_boss_attack.emit()
 		enemy.velocity = LEAP_VECTOR if BossHandler.facingRight else LEAP_VECTOR * Vector2(-1,1)
@@ -117,6 +139,7 @@ func _leap():
 		animTimer.start()
 		leapCount += 1
 		onPlayer = false
+		enemy.move_and_slide()
 
 func _on_jump_anim_timeout() -> void:
 	enemy.move_and_slide()

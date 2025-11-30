@@ -43,8 +43,6 @@ func _process(_delta):
 	
 func _reduce_health(damage : float):
 	health -= damage
-	if health <= 100.0 / 2:
-		phase2 = true
 	
 func _attack_start():
 	attacking = true

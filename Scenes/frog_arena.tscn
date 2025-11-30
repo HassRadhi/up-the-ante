@@ -150,7 +150,7 @@ position = Vector2(579, 627)
 scale = Vector2(6, 6)
 
 [node name="Blind" type="Timer" parent="CanvasLayer"]
-wait_time = 4.0
+wait_time = 7.0
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -158,10 +158,10 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(31.978807, 21.30086)
-color = Color(1, 0.74207526, 0.879492, 0.80784315)
+color = Color(1, 0.7411765, 0.8784314, 0.9019608)
 
 [node name="KermitSupreme" parent="." instance=ExtResource("6_taw36")]
-position = Vector2(-154, -102)
+position = Vector2(-228, -94)
 scale = Vector2(1.5, 1.5)
 collision_mask = 32
 

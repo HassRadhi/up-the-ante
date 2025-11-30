@@ -18,17 +18,36 @@ func enter():
 	_eat()
 
 func _eat():
-	BossHandler.sprite.play("GrapeEat")
+	if BossHandler.phase2:
+		BossHandler.sprite.play("GrapeEat2")
+	else:
+		BossHandler.sprite.play("GrapeEat")
 	await BossHandler.sprite.animation_finished
 	eatTimer.start()
 	
 
 func _on_eat_anim_timeout() -> void:
-	BossHandler.sprite.play("TurnAway")
+	if BossHandler.phase2:
+		BossHandler.sprite.play("TurnAway2")
+	else:
+		BossHandler.sprite.play("TurnAway")
+	
 	await BossHandler.sprite.animation_finished
 	
-	for i in range(3):
-		BossHandler.sprite.play("GrapeShoot")
+	var numOfGrapes
+	if BossHandler.phase2:
+		if BossHandler.health <= 25.0:
+			numOfGrapes = 7
+		else:
+			numOfGrapes = 5
+	else:
+		numOfGrapes = 3
+		
+	for i in range(numOfGrapes):
+		if BossHandler.phase2:
+			BossHandler.sprite.play("GrapeShoot2")
+		else:
+			BossHandler.sprite.play("GrapeShoot")
 		await BossHandler.sprite.animation_finished
 		
 		var grape = grapes[i]

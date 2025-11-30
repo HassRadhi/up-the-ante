@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
-var speed = 800
+var speed = 600
 var direction = Vector2.ZERO
 
 func shoot():

@@ -45,7 +45,7 @@ enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://dkeytwxy4rvls"
 
 [node name="JumpAnim" type="Timer" parent="StateMachine/EnemyStomp"]
-wait_time = 0.6
+wait_time = 0.5
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="StateMachine/EnemyStomp"]
@@ -83,12 +83,6 @@ visible = false
 visible = false
 
 [node name="Grape5" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
-
-[node name="Grape6" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
-
-[node name="Grape7" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
 visible = false
 
 [node name="Rest" type="Timer" parent="StateMachine/EnemyGrapeAttack"]
