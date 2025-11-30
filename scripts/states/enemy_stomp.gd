@@ -7,6 +7,7 @@ signal landed
 @onready var animTimer = $JumpAnim
 @onready var groundRay = $RayCast2D
 @onready var attackIndicator = $RayCast2D/AttackIndicator
+@onready var sound = enemy.get_node("AudioStreamPlayer")
 
 const LEAP_VECTOR = Vector2(100, -3000)
 
@@ -52,6 +53,7 @@ func physics_update(delta: float):
 	
 	if enemy.velocity.y > 0 and groundRay.is_colliding():
 		if transitioning:
+			SignalBus.stop_all_music.emit()
 			BossHandler.sprite.play("FallingChange")
 			
 		var hitPoint = groundRay.get_collision_point()
@@ -83,6 +85,7 @@ func physics_update(delta: float):
 				transitioning = false
 				timer.wait_time = 2
 				await BossHandler.sprite.animation_finished
+				sound.play()
 				BossHandler.sprite.play("TurnAway2")
 				await BossHandler.sprite.animation_finished
 			

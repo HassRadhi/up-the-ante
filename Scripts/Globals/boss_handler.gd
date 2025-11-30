@@ -17,6 +17,11 @@ func _ready():
 	start_boss_attack.connect(_attack_start)
 	end_boss_attack.connect(_attack_end)
 	SignalBus.damage_boss.connect(_reduce_health)
+	
+func restart():
+	phase2 = false
+	facingRight = true
+	health = 100.0
 
 func set_current_boss(newBoss : CharacterBody2D):
 	boss = newBoss

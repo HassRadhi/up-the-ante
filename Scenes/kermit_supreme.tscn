@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dku7co8fktvs5"]
+[gd_scene load_steps=16 format=3 uid="uid://dku7co8fktvs5"]
 
 [ext_resource type="Script" uid="uid://c4ecx0ojmcank" path="res://Scripts/States/enemy_chilling.gd" id="1_h3ksu"]
 [ext_resource type="Script" uid="uid://bnelan4wbc06g" path="res://Scripts/Bosses/Kermit/kermit_actions.gd" id="1_m8n22"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cobjl3nj4qsic" path="res://Scenes/grape.tscn" id="8_p7pso"]
 [ext_resource type="Script" uid="uid://cia2s2p8nlg1x" path="res://Scenes/enemy_tongue_attack.gd" id="9_tv1vs"]
 [ext_resource type="PackedScene" uid="uid://1vb3b8csge0e" path="res://Scenes/tongue.tscn" id="10_mp7jv"]
+[ext_resource type="AudioStream" uid="uid://babt3yte4utqy" path="res://Assets/17 Metallic Mario.mp3" id="12_mp7jv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(142, 115.5)
@@ -104,6 +105,11 @@ scale = Vector2(0.48000064, 1)
 
 [node name="Tongue" parent="." instance=ExtResource("10_mp7jv")]
 position = Vector2(276, -171)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mp7jv")
+volume_db = -10.0
+parameters/looping = true
 
 [connection signal="landed" from="StateMachine/EnemyStomp" to="Stomp" method="_on_enemy_stomp_landed"]
 [connection signal="transitioned" from="StateMachine/EnemyStomp" to="StateMachine" method="_on_enemy_stomp_transitioned"]

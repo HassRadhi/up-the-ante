@@ -27,4 +27,6 @@ func _shake_healthbar(damage : float):
 
 func _on_damage_boss(damage: float) -> void:
 	_reduce_health(damage)
+	if BossHandler.health <= 0:
+		return
 	_shake_healthbar(damage * 5)
