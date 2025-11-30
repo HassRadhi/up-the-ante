@@ -28,10 +28,9 @@ func get_current_boss() -> CharacterBody2D:
 	return boss
 
 func _process(_delta):
-	sprite.flip_h = !facingRight
-	
 	if !boss:
 		return
+	sprite.flip_h = !facingRight
 	
 	if attacking: 
 		return

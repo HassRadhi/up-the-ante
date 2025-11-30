@@ -2,8 +2,8 @@ extends Node
 
 const Scenes = {
 	"Spawn": {
-		"leftBound": -500,
-		"rightBound": 500,
+		"leftBound": -100,
+		"rightBound": 2750,
 	},
 	"FrogArena": {
 		"leftBound": -500,

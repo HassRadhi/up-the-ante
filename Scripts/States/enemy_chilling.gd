@@ -7,8 +7,11 @@ var player : CharacterBody2D
 var initialPosition
 
 func enter():
+	if not enemy:
+		return
 	player = Locator.get_player()
 	initialPosition = player.global_position
+	
 
 func physics_update(delta: float):
 	if not enemy.is_on_floor():
