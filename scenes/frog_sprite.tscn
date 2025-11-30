@@ -19,6 +19,7 @@ atlas = ExtResource("1_slgur")
 region = Rect2(256, 0, 128, 128)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cyyp"]
 atlas = ExtResource("1_slgur")
 region = Rect2(128, 128, 128, 128)
@@ -31,6 +32,8 @@ region = Rect2(128, 256, 128, 128)
 atlas = ExtResource("2_byod8")
 region = Rect2(128, 128, 128, 128)
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="AtlasTexture" id="AtlasTexture_40hiu"]
 atlas = ExtResource("1_slgur")
 region = Rect2(256, 128, 128, 128)
@@ -38,6 +41,9 @@ region = Rect2(256, 128, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixd6f"]
 atlas = ExtResource("1_slgur")
 region = Rect2(384, 0, 128, 128)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_paebn"]
@@ -149,11 +155,15 @@ atlas = ExtResource("7_h4x25")
 region = Rect2(256, 128, 128, 128)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="AtlasTexture" id="AtlasTexture_40hiu"]
 atlas = ExtResource("1_slgur")
 region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71pkg"]
+=======
+[sub_resource type="AtlasTexture" id="AtlasTexture_5exqf"]
+>>>>>>> Stashed changes
 =======
 [sub_resource type="AtlasTexture" id="AtlasTexture_5exqf"]
 >>>>>>> Stashed changes
@@ -301,6 +311,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ixd6f")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }],
 "loop": false,
@@ -324,6 +337,7 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "texture": SubResource("AtlasTexture_yakrr")
 }],
 "loop": true,
@@ -332,6 +346,8 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 "texture": SubResource("AtlasTexture_ldahj")
@@ -427,10 +443,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "texture": SubResource("AtlasTexture_40hiu")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_71pkg")
+=======
+"texture": SubResource("AtlasTexture_5exqf")
+>>>>>>> Stashed changes
 =======
 "texture": SubResource("AtlasTexture_5exqf")
 >>>>>>> Stashed changes
@@ -567,9 +587,15 @@ animations = [{
 }, {
 "duration": 1.0,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "texture": SubResource("AtlasTexture_5cyyp")
 }],
 "loop": false,
+=======
+"texture": SubResource("AtlasTexture_byy0m")
+}],
+"loop": true,
+>>>>>>> Stashed changes
 =======
 "texture": SubResource("AtlasTexture_byy0m")
 }],
@@ -582,7 +608,11 @@ animations = [{
 [node name="Frog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6buye")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 animation = &"Sussy1"
+=======
+animation = &"ToungeAttack2"
+>>>>>>> Stashed changes
 =======
 animation = &"ToungeAttack2"
 >>>>>>> Stashed changes
