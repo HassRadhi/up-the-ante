@@ -10,6 +10,7 @@ var isGrounded = false
 func enter():
 	player = get_tree().get_first_node_in_group("Player")
 	initialPosition = player.global_position
+	
 
 func physics_update(delta: float):
 	if not enemy.is_on_floor():
