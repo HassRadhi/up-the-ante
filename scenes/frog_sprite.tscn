@@ -518,8 +518,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x28hs")
 }],
-"loop": true,
-"name": &"ToungeAttack2",
+"loop": false,
+"name": &"TongueAttack2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -536,4 +536,4 @@ animations = [{
 
 [node name="Frog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6buye")
-animation = &"Sussy1"
+animation = &"Chilling"

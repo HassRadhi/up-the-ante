@@ -17,6 +17,7 @@ var timer := Timer.new()
 var jumping = false
 var leapCount = 0
 var onPlayer = true
+var transitioning = true
 
 func _ready():
 	add_child(timer)
@@ -50,6 +51,7 @@ func physics_update(delta: float):
 		enemy.velocity += enemy.get_gravity() * delta * 5
 	
 	if enemy.velocity.y > 0 and groundRay.is_colliding():
+		
 		var hitPoint = groundRay.get_collision_point()
 		var origin = groundRay.global_position
 
@@ -73,9 +75,24 @@ func physics_update(delta: float):
 			BossHandler.sprite.play("FaceTurn")
 			BossHandler.end_boss_attack.emit()
 			
+			if BossHandler.health <= 50.0 and !BossHandler.phase2:
+				transitioning = true
+				return
+			
 			if leapCount > 2 and BossHandler.health <= 75.0:
 				if randi_range(0,1) == 1:
 					transitioned.emit(self, "EnemyGrapeAttack")
+					return
+				if BossHandler.phase2 and randi_range(0,1) == 1:
+					transitioned.emit(self, "EnemyTongueAttack")
+					return
+				
+			if BossHandler.health <= 90 and BossHandler.health > 75:
+				BossHandler.sprite.play("Sussy1")
+			if BossHandler.health <= 75 and BossHandler.health > 60:
+				BossHandler.sprite.play("Sussy2")
+			if BossHandler.health <= 60 and !BossHandler.phase2:
+				BossHandler.sprite.play("Sussy3")
 	
 	elif isGrounded:
 		isGrounded = false
@@ -90,7 +107,12 @@ func _leap():
 	if enemy.is_on_floor():
 		BossHandler.start_boss_attack.emit()
 		enemy.velocity = LEAP_VECTOR if BossHandler.facingRight else LEAP_VECTOR * Vector2(-1,1)
-		BossHandler.sprite.play("InitialJump")
+		if transitioning:
+			BossHandler.sprite.play("JumpChange")
+		elif BossHandler.phase2:
+			BossHandler.sprite.play("InitialJump2")
+		else:
+			BossHandler.sprite.play("InitialJump")
 		jumping = true
 		animTimer.start()
 		leapCount += 1

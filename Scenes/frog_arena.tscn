@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://dmv7704ml4s02"]
+[gd_scene load_steps=15 format=4 uid="uid://dmv7704ml4s02"]
 
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://Scenes/ant.tscn" id="1_fefva"]
 [ext_resource type="Texture2D" uid="uid://yn7s314o5i08" path="res://Assets/Sprites/Tilemap.png" id="1_jr0as"]
 [ext_resource type="PackedScene" uid="uid://brndj61yah8jb" path="res://Scenes/mush_room.tscn" id="3_0nwkt"]
 [ext_resource type="PackedScene" uid="uid://cmj4y3xg1dn27" path="res://Scenes/trick_notifier.tscn" id="4_1n6mm"]
+[ext_resource type="Script" uid="uid://cwgxrq0vs72ie" path="res://Scenes/canvas_layer.gd" id="4_7rpip"]
 [ext_resource type="PackedScene" uid="uid://bh5syvsrjurhm" path="res://Scenes/boss_health_bar.tscn" id="6_7rpip"]
 [ext_resource type="PackedScene" uid="uid://dku7co8fktvs5" path="res://Scenes/kermit_supreme.tscn" id="6_taw36"]
 
@@ -139,6 +140,7 @@ position = Vector2(5984, 463)
 scale = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_7rpip")
 
 [node name="TrickNotifier" parent="CanvasLayer" node_paths=PackedStringArray("bossHealthbar") instance=ExtResource("4_1n6mm")]
 bossHealthbar = NodePath("../BossHealthBar")
@@ -146,6 +148,17 @@ bossHealthbar = NodePath("../BossHealthBar")
 [node name="BossHealthBar" parent="CanvasLayer" instance=ExtResource("6_7rpip")]
 position = Vector2(579, 627)
 scale = Vector2(6, 6)
+
+[node name="Blind" type="Timer" parent="CanvasLayer"]
+wait_time = 4.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(31.978807, 21.30086)
+color = Color(1, 0.74207526, 0.879492, 0.80784315)
 
 [node name="KermitSupreme" parent="." instance=ExtResource("6_taw36")]
 position = Vector2(-154, -102)
@@ -300,5 +313,6 @@ shape = SubResource("RectangleShape2D_7rpip")
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
+[connection signal="timeout" from="CanvasLayer/Blind" to="CanvasLayer" method="_on_blind_timeout"]
 [connection signal="boss_collision_end" from="KermitSupreme" to="Ant" method="_on_kermit_supreme_boss_collision_end"]
 [connection signal="boss_collision_start" from="KermitSupreme" to="Ant" method="_on_kermit_supreme_boss_collision_start"]
