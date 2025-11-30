@@ -11,11 +11,22 @@ func _ready():
 	for child in get_children():
 		if child is CharacterBody2D:
 			grapes.append(child)
+			_disable_collisions(child)
+
+func _enable_collisions(node):
+	node.get_node("Hitbox").get_node("CollisionShape2D").disabled = false
+
+func _disable_collisions(node):
+	node.get_node("Hitbox").get_node("CollisionShape2D").disabled = true
 
 func enter():
 	player = Locator.get_player()
 	await get_tree().process_frame
 	_eat()
+
+func exit():
+	for grape in grapes:
+		_disable_collisions(grape)
 
 func _eat():
 	if BossHandler.phase2:
@@ -51,6 +62,7 @@ func _on_eat_anim_timeout() -> void:
 		await BossHandler.sprite.animation_finished
 		
 		var grape = grapes[i]
+		_enable_collisions(grape)
 		grape.visible = true
 		
 		var offset = Vector2(200, 0) if BossHandler.facingRight else Vector2(-50, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bh5syvsrjurhm"]
 
 [ext_resource type="Texture2D" uid="uid://bflnkl1su7jta" path="res://Assets/Sprites/FrogHealthBar-Sheet.png" id="1_b4i8v"]
-[ext_resource type="Script" uid="uid://b1lp1o7hrr524" path="res://Scenes/boss_health_bar.gd" id="1_m6tp3"]
+[ext_resource type="Script" uid="uid://b1lp1o7hrr524" path="res://Scripts/UI/boss_health_bar.gd" id="1_m6tp3"]
 [ext_resource type="Theme" uid="uid://d0rn6f6wsx0fg" path="res://Assets/default.tres" id="2_1oivh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1oivh"]

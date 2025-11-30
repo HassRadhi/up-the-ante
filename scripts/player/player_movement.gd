@@ -14,13 +14,13 @@ const GROUND_SPEED_THRESHOLD = 3000.0
 var speedMult = 1.0
 var last_floor_normal = null
 
-
 @onready var stunTimer = $Stun
 @onready var sprite = $AntSprite
 @onready var boostTimer = $TurnBoost
 var isStunned = false
 var isGrounded = false
 var isOnFloor = false
+var disabled = true
 
 # Anim States
 var facingRight = true
@@ -34,6 +34,9 @@ func _ready():
 	Locator.register_player(self)
 	
 func _physics_process(delta: float) -> void:
+	if disabled:
+		return
+		
 	var wasOnFloor = isOnFloor
 	
 	var new_floor = false
@@ -212,3 +215,7 @@ func _on_kermit_supreme_boss_collision_start() -> void:
 
 func _on_kermit_supreme_boss_collision_end() -> void:
 	$CollisionShape2D._player_exited_boss_hurtbox()
+
+
+func _on_kermite_supreme_enable_player() -> void:
+	disabled = false

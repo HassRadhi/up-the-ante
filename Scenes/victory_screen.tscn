@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl03y2jpc8b2m"]
+
+[ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="1_oq8vb"]
+[ext_resource type="Script" uid="uid://ckbvhdfew02ro" path="res://Scripts/UI/retry.gd" id="2_fmvqe"]
+[ext_resource type="Script" uid="uid://djxe1auv6e7hm" path="res://Scripts/UI/death_buttons.gd" id="3_vrh3u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mubwb"]
+font = ExtResource("1_oq8vb")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0.88753974, 0.35421094, 0.22899798, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dbb0g"]
+font = ExtResource("1_oq8vb")
+font_size = 80
+font_color = Color(0.9999972, 0.9767229, 0.97270447, 1)
+outline_size = 10
+outline_color = Color(0, 0.6378959, 0.63789576, 1)
+
+[sub_resource type="Theme" id="Theme_m5bpc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmvqe"]
+font = ExtResource("1_oq8vb")
+font_size = 100
+
+[node name="VictoryScreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.7777, 16.46086)
+color = Color(0.023674842, 0.48174167, 0.8574774, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -56.0
+offset_top = 144.0
+offset_right = 1261.0
+offset_bottom = 393.0
+text = "That ANTagonist didnt stand a chance
+
+Thanks for playing this small game we hope
+it didn't BUG you"
+label_settings = SubResource("LabelSettings_mubwb")
+horizontal_alignment = 1
+
+[node name="Retry" type="Label" parent="."]
+z_index = 100
+offset_left = -344.0
+offset_top = 467.0
+offset_right = 973.0
+offset_bottom = 664.0
+text = "PLAY AGAIN?"
+label_settings = SubResource("LabelSettings_dbb0g")
+horizontal_alignment = 1
+script = ExtResource("2_fmvqe")
+
+[node name="Button" type="Button" parent="Retry"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 408.0
+offset_top = -11.000001
+offset_right = 416.0
+offset_bottom = -3.000001
+scale = Vector2(66.162674, 16.158829)
+
+[node name="Quit" type="Label" parent="."]
+top_level = true
+z_index = 100
+offset_left = 232.0
+offset_top = 467.0
+offset_right = 1549.0
+offset_bottom = 664.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_dbb0g")
+horizontal_alignment = 1
+script = ExtResource("3_vrh3u")
+
+[node name="Button" type="Button" parent="Quit"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 504.0
+offset_top = -11.000001
+offset_right = 512.0
+offset_bottom = -3.000001
+scale = Vector2(38.314365, 15.765092)
+theme = SubResource("Theme_m5bpc")
+
+[node name="Victory" type="Label" parent="."]
+offset_left = 384.0
+offset_right = 835.0
+offset_bottom = 120.0
+text = "VICTORY!!!"
+label_settings = SubResource("LabelSettings_fmvqe")
+
+[connection signal="mouse_entered" from="Retry/Button" to="Retry" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Retry/Button" to="Retry" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Retry/Button" to="Retry" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Quit/Button" to="Quit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Quit/Button" to="Quit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Quit/Button" to="Quit" method="_on_button_pressed"]

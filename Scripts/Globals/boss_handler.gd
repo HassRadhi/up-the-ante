@@ -28,10 +28,9 @@ func get_current_boss() -> CharacterBody2D:
 	return boss
 
 func _process(_delta):
-	sprite.flip_h = !facingRight
-	
 	if !boss:
 		return
+	sprite.flip_h = !facingRight
 	
 	if attacking: 
 		return
@@ -43,6 +42,8 @@ func _process(_delta):
 	
 func _reduce_health(damage : float):
 	health -= damage
+	if health <= 0.0:
+		get_tree().change_scene_to_file("res://Scenes/victory_screen.tscn")
 	
 func _attack_start():
 	attacking = true

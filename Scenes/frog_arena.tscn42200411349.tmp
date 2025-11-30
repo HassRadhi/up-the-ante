@@ -336,6 +336,5 @@ shape = SubResource("RectangleShape2D_7rpip")
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]
 [connection signal="timeout" from="CanvasLayer/Blind" to="CanvasLayer" method="_on_blind_timeout"]
-[connection signal="enable_player" from="CanvasLayer/KermiteSupreme" to="Ant" method="_on_kermite_supreme_enable_player"]
 [connection signal="boss_collision_end" from="KermitSupreme" to="Ant" method="_on_kermit_supreme_boss_collision_end"]
 [connection signal="boss_collision_start" from="KermitSupreme" to="Ant" method="_on_kermit_supreme_boss_collision_start"]

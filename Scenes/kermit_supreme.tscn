@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://Scripts/States/enemy_stomp.gd" id="3_dnocs"]
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://Scripts/States/state_machine.gd" id="4_8jcad"]
 [ext_resource type="PackedScene" uid="uid://o5qntbo4uhww" path="res://Scenes/stomp.tscn" id="5_e1ubu"]
-[ext_resource type="Script" uid="uid://bpkcr5cwtkara" path="res://Scenes/attack_indicator.gd" id="5_r4sy5"]
+[ext_resource type="Script" uid="uid://bpkcr5cwtkara" path="res://Scripts/Bosses/Kermit/attack_indicator.gd" id="5_r4sy5"]
 [ext_resource type="Script" uid="uid://dm01ld81axxxf" path="res://Scenes/enemy_grape_attack.gd" id="7_f887q"]
 [ext_resource type="PackedScene" uid="uid://cobjl3nj4qsic" path="res://Scenes/grape.tscn" id="8_p7pso"]
 [ext_resource type="Script" uid="uid://cia2s2p8nlg1x" path="res://Scenes/enemy_tongue_attack.gd" id="9_tv1vs"]
@@ -71,25 +71,18 @@ enemy = NodePath("../..")
 one_shot = true
 
 [node name="Grape" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape2" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape3" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape4" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape5" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape6" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Grape7" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
 
 [node name="Rest" type="Timer" parent="StateMachine/EnemyGrapeAttack"]
 one_shot = true

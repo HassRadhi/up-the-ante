@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://curk2xnc4gr4x"]
+
+[ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="2_amiou"]
+[ext_resource type="Script" uid="uid://cjo4c3cgcqtrt" path="res://Scenes/death_message.gd" id="2_vb6s7"]
+[ext_resource type="Script" uid="uid://ckbvhdfew02ro" path="res://Scripts/UI/retry.gd" id="3_amiou"]
+[ext_resource type="Script" uid="uid://djxe1auv6e7hm" path="res://Scripts/UI/death_buttons.gd" id="3_vb6s7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6udk"]
+font = ExtResource("2_amiou")
+font_size = 80
+font_color = Color(0.9122707, 3.1766297e-06, 6.738305e-07, 1)
+outline_size = 10
+outline_color = Color(0, 0.6378959, 0.63789576, 1)
+
+[sub_resource type="Theme" id="Theme_2s36y"]
+
+[node name="DeathScreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.7777, 16.46086)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -72.0
+offset_top = 136.0
+offset_right = 1245.0
+offset_bottom = 333.0
+text = "Bet you didn't ANTicipate 
+that one"
+label_settings = SubResource("LabelSettings_i6udk")
+horizontal_alignment = 1
+script = ExtResource("2_vb6s7")
+
+[node name="Retry" type="Label" parent="."]
+z_index = 100
+offset_left = -344.0
+offset_top = 435.0
+offset_right = 973.0
+offset_bottom = 632.0
+text = "RETRY"
+label_settings = SubResource("LabelSettings_i6udk")
+horizontal_alignment = 1
+script = ExtResource("3_amiou")
+
+[node name="Button" type="Button" parent="Retry"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 504.0
+offset_top = -11.000001
+offset_right = 512.0
+offset_bottom = -3.000001
+scale = Vector2(38.882683, 16.158829)
+
+[node name="Quit" type="Label" parent="."]
+top_level = true
+z_index = 100
+offset_left = 224.0
+offset_top = 424.0
+offset_right = 1541.0
+offset_bottom = 621.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_i6udk")
+horizontal_alignment = 1
+script = ExtResource("3_vb6s7")
+
+[node name="Button" type="Button" parent="Quit"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 504.0
+offset_top = -11.0
+offset_right = 512.0
+offset_bottom = -3.0
+scale = Vector2(38.314365, 16.845093)
+theme = SubResource("Theme_2s36y")
+
+[connection signal="mouse_entered" from="Retry/Button" to="Retry" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Retry/Button" to="Retry" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Retry/Button" to="Retry" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Quit/Button" to="Quit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Quit/Button" to="Quit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Quit/Button" to="Quit" method="_on_button_pressed"]
