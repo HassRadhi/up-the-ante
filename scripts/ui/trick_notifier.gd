@@ -1,7 +1,5 @@
 extends Control
 
-signal damage_boss(damage : float)
-
 const ENTER_OFFSET = 50
 const RISE_DISTANCE = 120
 const ENTER_TIME = 0.25
@@ -117,7 +115,7 @@ func reset_trick():
 
 	await tween.finished
 
-	damage_boss.emit(TrickHandler.get_combo_damage(lastTrick, curCombo))
+	SignalBus.damage_boss.emit(TrickHandler.get_combo_damage(lastTrick, curCombo))
 	hittingBoss = false
 	
 func _on_same_combo_timeout() -> void:

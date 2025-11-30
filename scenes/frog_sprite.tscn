@@ -22,10 +22,6 @@ region = Rect2(128, 128, 128, 128)
 atlas = ExtResource("1_slgur")
 region = Rect2(128, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_40hiu"]
-atlas = ExtResource("1_slgur")
-region = Rect2(256, 128, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_omj1a"]
 atlas = ExtResource("2_byod8")
 region = Rect2(128, 128, 128, 128)
@@ -140,6 +136,10 @@ region = Rect2(128, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_odvmx"]
 atlas = ExtResource("7_h4x25")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40hiu"]
+atlas = ExtResource("1_slgur")
 region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71pkg"]
@@ -273,12 +273,6 @@ animations = [{
 }, {
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_cvt0w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40hiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cyyp")
 }],
 "loop": false,
 "name": &"FaceTurn",
@@ -311,17 +305,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_40hiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cyyp")
-}],
-"loop": true,
-"name": &"FightStart",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ldahj")
 }, {
 "duration": 1.0,
@@ -339,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_arae7")
 }],
-"loop": true,
+"loop": false,
 "name": &"GrapeEat",
 "speed": 5.0
 }, {
@@ -385,7 +368,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_caf8h")
 }],
-"loop": true,
+"loop": false,
 "name": &"GrapeShoot",
 "speed": 5.0
 }, {
@@ -413,6 +396,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40hiu")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_71pkg")
 }, {
@@ -492,15 +478,25 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_65frd")
+}],
+"loop": true,
+"name": &"Sussy1",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4e3y3")
+}],
+"loop": true,
+"name": &"Sussy2",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ico33")
 }],
 "loop": true,
-"name": &"Sussy",
+"name": &"Sussy3",
 "speed": 5.0
 }, {
 "frames": [{
@@ -525,8 +521,19 @@ animations = [{
 "loop": true,
 "name": &"ToungeAttack2",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40hiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cyyp")
+}],
+"loop": false,
+"name": &"TurnAway",
+"speed": 5.0
 }]
 
 [node name="Frog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6buye")
-animation = &"Chilling"
+animation = &"Sussy1"

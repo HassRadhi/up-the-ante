@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dku7co8fktvs5"]
+[gd_scene load_steps=11 format=3 uid="uid://dku7co8fktvs5"]
 
 [ext_resource type="Script" uid="uid://c4ecx0ojmcank" path="res://Scripts/States/enemy_chilling.gd" id="1_h3ksu"]
 [ext_resource type="Script" uid="uid://bnelan4wbc06g" path="res://Scripts/Bosses/Kermit/kermit_actions.gd" id="1_m8n22"]
@@ -7,16 +7,14 @@
 [ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://Scripts/States/state_machine.gd" id="4_8jcad"]
 [ext_resource type="PackedScene" uid="uid://o5qntbo4uhww" path="res://Scenes/stomp.tscn" id="5_e1ubu"]
 [ext_resource type="Script" uid="uid://bpkcr5cwtkara" path="res://Scenes/attack_indicator.gd" id="5_r4sy5"]
-[ext_resource type="Script" uid="uid://dm01ld81axxxf" path="res://Scenes/enemy_grape_attack.gd" id="7_f887q"]
-[ext_resource type="PackedScene" uid="uid://cobjl3nj4qsic" path="res://Scenes/grape.tscn" id="8_p7pso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(142, 115.5)
 
-[sub_resource type="ImageTexture" id="ImageTexture_r4sy5"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(175, 140)
+
+[sub_resource type="ImageTexture" id="ImageTexture_r4sy5"]
 
 [node name="KermitSupreme" type="CharacterBody2D"]
 collision_layer = 0
@@ -44,39 +42,9 @@ metadata/_custom_type_script = "uid://dkeytwxy4rvls"
 wait_time = 0.5
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="StateMachine/EnemyStomp"]
-exclude_parent = false
-target_position = Vector2(0, 4000)
-collision_mask = 32
-
-[node name="AttackIndicator" type="Sprite2D" parent="StateMachine/EnemyStomp/RayCast2D"]
-modulate = Color(1, 1, 1, 0.44705883)
-scale = Vector2(1, 1e-05)
-texture = SubResource("ImageTexture_r4sy5")
-script = ExtResource("5_r4sy5")
-
 [node name="EnemyChilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("1_h3ksu")
 enemy = NodePath("../..")
-
-[node name="EnemyGrapeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("7_f887q")
-enemy = NodePath("../..")
-
-[node name="EatAnim" type="Timer" parent="StateMachine/EnemyGrapeAttack"]
-one_shot = true
-
-[node name="Grape" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
-
-[node name="Grape2" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
-
-[node name="Grape3" parent="StateMachine/EnemyGrapeAttack" instance=ExtResource("8_p7pso")]
-visible = false
-
-[node name="Rest" type="Timer" parent="StateMachine/EnemyGrapeAttack"]
-one_shot = true
 
 [node name="BossHurtbox" type="Area2D" parent="." groups=["BossHurtbox"]]
 collision_layer = 2
@@ -89,11 +57,19 @@ shape = SubResource("RectangleShape2D_4c57u")
 position = Vector2(0, 45)
 scale = Vector2(0.8000008, 1)
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(0, 4000)
+collision_mask = 32
+
+[node name="AttackIndicator" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.44705883)
+texture = SubResource("ImageTexture_r4sy5")
+script = ExtResource("5_r4sy5")
+
 [connection signal="landed" from="StateMachine/EnemyStomp" to="Stomp" method="_on_enemy_stomp_landed"]
 [connection signal="transitioned" from="StateMachine/EnemyStomp" to="StateMachine" method="_on_enemy_stomp_transitioned"]
 [connection signal="timeout" from="StateMachine/EnemyStomp/JumpAnim" to="StateMachine/EnemyStomp" method="_on_jump_anim_timeout"]
 [connection signal="transitioned" from="StateMachine/EnemyChilling" to="StateMachine" method="_on_enemy_chilling_transitioned"]
-[connection signal="timeout" from="StateMachine/EnemyGrapeAttack/EatAnim" to="StateMachine/EnemyGrapeAttack" method="_on_eat_anim_timeout"]
-[connection signal="timeout" from="StateMachine/EnemyGrapeAttack/Rest" to="StateMachine/EnemyGrapeAttack" method="_on_rest_timeout"]
 [connection signal="body_shape_entered" from="BossHurtbox" to="." method="_on_boss_hurtbox_body_shape_entered"]
 [connection signal="body_shape_exited" from="BossHurtbox" to="." method="_on_boss_hurtbox_body_shape_exited"]

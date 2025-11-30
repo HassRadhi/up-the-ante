@@ -4,6 +4,9 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 var period:float = 0.3
 
+func _ready():
+	SignalBus.damage_boss.connect(_on_damage_boss)
+
 func _reduce_health(damage : float):
 	progress.value = lerp(progress.value, progress.value - damage, 1)
 	if progress.value <= progress.max_value / 2:
@@ -22,6 +25,6 @@ func _shake_healthbar(damage : float):
 		await get_tree().process_frame
 		self.transform = initial_transform
 
-func _on_trick_notifier_damage_boss(damage: float) -> void:
+func _on_damage_boss(damage: float) -> void:
 	_reduce_health(damage)
 	_shake_healthbar(damage * 5)

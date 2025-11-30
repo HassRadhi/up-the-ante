@@ -16,5 +16,4 @@ func physics_update(delta: float):
 		enemy.move_and_slide()
 		
 	if Vector2(player.global_position - initialPosition).length() > 10:
-		BossHandler.sprite.play("FightStart")
 		transitioned.emit(self, "EnemyStomp")

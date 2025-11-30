@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if curState:
 		curState.physics_update(delta)
 
-func on_transition(state, newStateName):
+func on_transition(state : State, newStateName : String):
 	if state != curState:
 		return
 	

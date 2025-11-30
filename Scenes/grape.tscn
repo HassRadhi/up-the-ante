@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://cobjl3nj4qsic"]
+
+[ext_resource type="Script" uid="uid://ccsju1s0k8ujq" path="res://Scripts/Bosses/Kermit/grape.gd" id="1_8ew26"]
+[ext_resource type="Texture2D" uid="uid://bxrp1l5u843dv" path="res://Assets/Sprites/FrogAnimationsPhase1/GrapeProjectile.png" id="1_lyd8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyd8r"]
+atlas = ExtResource("1_lyd8r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j46mh"]
+atlas = ExtResource("1_lyd8r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yafxw"]
+atlas = ExtResource("1_lyd8r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fcr5"]
+atlas = ExtResource("1_lyd8r")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwh5t"]
+atlas = ExtResource("1_lyd8r")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7atw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyd8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j46mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yafxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fcr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwh5t")
+}],
+"loop": true,
+"name": &"grape",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idte8"]
+radius = 2.0
+
+[node name="Grape" type="CharacterBody2D"]
+scale = Vector2(10, 10)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_8ew26")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k7atw")
+animation = &"grape"
+frame = 1
+frame_progress = 0.8178983
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_idte8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CircleShape2D_idte8")
+
+[connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]

@@ -13,5 +13,4 @@ func _on_enemy_stomp_landed() -> void:
 	sprite.visible = true
 	sprite.play("Smoke")
 	collider.disabled = false
-	frogSprite.play("FaceTurn")
 	fartTimer.start()
