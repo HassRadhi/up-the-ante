@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var frogSprite = get_parent().get_node("FrogSprite")
 @onready var sprite = $Sprite
 @onready var fartTimer = $FartCD
 @onready var collider = $Area2D/CollisionShape2D
@@ -12,4 +13,5 @@ func _on_enemy_stomp_landed() -> void:
 	sprite.visible = true
 	sprite.play("Smoke")
 	collider.disabled = false
+	frogSprite.play("FaceTurn")
 	fartTimer.start()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://bh62k3sf7ybnw"]
 
 [ext_resource type="PackedScene" uid="uid://pvo8vnuwk3o3" path="res://Scenes/ant.tscn" id="1_4c57u"]
-[ext_resource type="PackedScene" uid="uid://dku7co8fktvs5" path="res://kermit_supreme.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dku7co8fktvs5" path="res://Scenes/kermit_supreme.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cniu0x327pcfg" path="res://Assets/world_tileset.png" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://cgvkvccw0uuri" path="res://Scripts/UI/trick_notifier.gd" id="9_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bh5syvsrjurhm" path="res://Scenes/boss_health_bar.tscn" id="10_4c57u"]

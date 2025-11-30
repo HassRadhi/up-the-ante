@@ -21,6 +21,7 @@ Utils="*res://Scripts/Globals/utils.gd"
 Locator="*res://Scripts/Globals/locator.gd"
 SceneTransition="*res://scene_transition.tscn"
 TrickHandler="*res://Scripts/Globals/trick_handler.gd"
+BossHandler="*res://Scripts/Globals/boss_handler.gd"
 
 [debug]
 
@@ -68,6 +69,7 @@ crouch={
 2d_physics/layer_3="floor"
 2d_physics/layer_4="wall"
 2d_physics/layer_5="obstacles"
+2d_physics/layer_6="boss floor"
 
 [physics]
 

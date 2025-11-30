@@ -3,10 +3,14 @@ var period:float = 0.3
 
 func _ready():
 	SignalBus.shake_camera.connect(_camera_shake)
-	SignalBus.set_camera_left_limit.connect(_move_camera_limit)
+	SignalBus.set_camera_left_limit.connect(_move_left_camera_limit)
+	SignalBus.set_camera_right_limit.connect(_move_right_camera_limit)
 	
-func _move_camera_limit(limit):
+func _move_left_camera_limit(limit):
 	limit_left = limit
+
+func _move_right_camera_limit(limit):
+	limit_right = limit
 
 func _camera_shake(mag = 100.0):
 	var initial_transform:Transform2D = self.transform # Store the full initial transform of the camera

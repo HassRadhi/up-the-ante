@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://dku7co8fktvs5"]
+
+[ext_resource type="Script" uid="uid://c4ecx0ojmcank" path="res://Scripts/States/enemy_chilling.gd" id="1_h3ksu"]
+[ext_resource type="Script" uid="uid://bnelan4wbc06g" path="res://Scripts/Bosses/Kermit/kermit_actions.gd" id="1_m8n22"]
+[ext_resource type="PackedScene" uid="uid://d2qy27kcdtaps" path="res://Scenes/frog_sprite.tscn" id="2_sascs"]
+[ext_resource type="Script" uid="uid://dkeytwxy4rvls" path="res://Scripts/States/enemy_stomp.gd" id="3_dnocs"]
+[ext_resource type="Script" uid="uid://kbc8b0kxu3lh" path="res://Scripts/States/state_machine.gd" id="4_8jcad"]
+[ext_resource type="PackedScene" uid="uid://o5qntbo4uhww" path="res://Scenes/stomp.tscn" id="5_e1ubu"]
+[ext_resource type="Script" uid="uid://4ojh4qsdmv6a" path="res://Scenes/camera_handler.gd" id="7_r4sy5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(142, 123)
+
+[sub_resource type="GDScript" id="GDScript_272bh"]
+script/source = "extends StaticBody2D
+
+var enabled = true
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_272bh"]
+normal = Vector2(1, 0)
+distance = -9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(175, 134)
+
+[node name="KermitSupreme" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_m8n22")
+
+[node name="FrogSprite" parent="." instance=ExtResource("2_sascs")]
+position = Vector2(104, 319)
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(104, 307)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = SubResource("GDScript_272bh")
+
+[node name="Boundary" type="CollisionShape2D" parent="Wall"]
+position = Vector2(33, 369)
+shape = SubResource("WorldBoundaryShape2D_272bh")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initState")]
+script = ExtResource("4_8jcad")
+initState = NodePath("EnemyChilling")
+metadata/_custom_type_script = "uid://kbc8b0kxu3lh"
+
+[node name="EnemyStomp" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_dnocs")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://dkeytwxy4rvls"
+
+[node name="JumpAnim" type="Timer" parent="StateMachine/EnemyStomp"]
+wait_time = 0.5
+one_shot = true
+
+[node name="EnemyChilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("1_h3ksu")
+enemy = NodePath("../..")
+
+[node name="BossHurtbox" type="Area2D" parent="." groups=["BossHurtbox"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox"]
+position = Vector2(101.5, 300)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="Stomp" parent="." instance=ExtResource("5_e1ubu")]
+position = Vector2(101, 353)
+
+[node name="CameraHandler" type="Node" parent="."]
+script = ExtResource("7_r4sy5")
+
+[connection signal="landed" from="StateMachine/EnemyStomp" to="Stomp" method="_on_enemy_stomp_landed"]
+[connection signal="transitioned" from="StateMachine/EnemyStomp" to="StateMachine" method="_on_enemy_stomp_transitioned"]
+[connection signal="timeout" from="StateMachine/EnemyStomp/JumpAnim" to="StateMachine/EnemyStomp" method="_on_jump_anim_timeout"]
+[connection signal="transitioned" from="StateMachine/EnemyChilling" to="StateMachine" method="_on_enemy_chilling_transitioned"]
+[connection signal="body_shape_entered" from="BossHurtbox" to="." method="_on_boss_hurtbox_body_shape_entered"]
+[connection signal="body_shape_exited" from="BossHurtbox" to="." method="_on_boss_hurtbox_body_shape_exited"]

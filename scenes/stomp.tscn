@@ -17,14 +17,6 @@ scale = Vector2(27.800003, 1.3199991)
 frame = 0
 frame_progress = 0.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 292.28784
-offset_top = 323.5606
-offset_right = 332.28784
-offset_bottom = 363.5606
-scale = Vector2(0.33473498, -0.027282476)
-color = Color(0.45425114, 0.34621954, 0.2684145, 1)
-
 [node name="FartCD" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true

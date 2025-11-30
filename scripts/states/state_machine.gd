@@ -9,8 +9,8 @@ var states : Dictionary = {}
 func _ready():
 	for child in get_children():
 		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(_on_transition)
+			states[child.name] = child
+			child.transitioned.connect(on_transition)
 	
 	if initState:
 		initState.enter()
@@ -24,12 +24,17 @@ func _physics_process(delta):
 	if curState:
 		curState.physics_update(delta)
 
-func _on_transition(state, newStateName):
+func on_transition(state, newStateName):
 	if state != curState:
 		return
 	
-	var newState = states.get(newStateName.to_lower())
+	var newState = states.get(newStateName)
 	if !newState:
 		return
 	
+	if curState:
+		curState.exit()
 	
+	newState.enter()
+	
+	curState = newState

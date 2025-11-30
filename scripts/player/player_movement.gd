@@ -207,8 +207,8 @@ func _attempt_to_turn() -> void:
 func _on_turn_boost_timeout() -> void:
 	speedMult = lerp(speedMult, 1.0, 1)
 
-func _on_boss_hurtbox_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _on_kermit_supreme_boss_collision_start() -> void:
 	$CollisionShape2D._player_entered_boss_hurtbox()
-	
-func _on_boss_hurtbox_body_shape_exited(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+
+func _on_kermit_supreme_boss_collision_end() -> void:
 	$CollisionShape2D._player_exited_boss_hurtbox()
