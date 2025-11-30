@@ -2,6 +2,7 @@ extends Label
 
 signal enable_player
 
+#@onready var sound = get_tree().root.get_node("AudioStreamPlayer")
 @onready var screenPosition = position
 
 func _ready():
@@ -39,5 +40,5 @@ func play_swipe_sequence():
 	await tween.finished
 	
 	enable_player.emit()
-	
+	#sound.play()
 	queue_free()

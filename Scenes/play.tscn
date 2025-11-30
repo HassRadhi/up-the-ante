@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwunjgsvnsxfg"]
+
+[ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="1_dm5w0"]
+[ext_resource type="Script" uid="uid://c40dj2s3gmxce" path="res://Scenes/space.gd" id="2_dm5w0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0eko3"]
+font = ExtResource("1_dm5w0")
+font_size = 50
+font_color = Color(0.9999972, 0.9767229, 0.97270447, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuppe"]
+font = ExtResource("1_dm5w0")
+font_size = 100
+outline_size = 30
+outline_color = Color(0.2455107, 0.21946704, 0.0033576733, 1)
+
+[node name="Play" type="Node2D"]
+
+[node name="Space" type="Label" parent="."]
+z_index = 100
+offset_left = -147.0
+offset_top = 194.0
+offset_right = 373.0
+offset_bottom = 391.0
+text = "PRESS SPACE TO START"
+label_settings = SubResource("LabelSettings_0eko3")
+horizontal_alignment = 1
+script = ExtResource("2_dm5w0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -163.0
+offset_top = -165.0
+offset_right = 395.0
+offset_bottom = -45.0
+text = "UP THE ANTE"
+label_settings = SubResource("LabelSettings_cuppe")
+metadata/_edit_use_anchors_ = true

@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 	
 	time += delta
 	var progress = clamp(time / duration, 0.0, 2.2)
-	print("progress = ", progress)
 	mat.set_shader_parameter("progress", progress)
 
 	if progress >= 2.2:

@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://yn7s314o5i08" path="res://Assets/Sprites/Tilemap.png" id="1_jr0as"]
 [ext_resource type="PackedScene" uid="uid://brndj61yah8jb" path="res://Scenes/mush_room.tscn" id="3_0nwkt"]
 [ext_resource type="PackedScene" uid="uid://cmj4y3xg1dn27" path="res://Scenes/trick_notifier.tscn" id="4_1n6mm"]
+[ext_resource type="Script" uid="uid://byw5k57lc0stv" path="res://Scenes/healthbar.gd" id="4_2bspr"]
 [ext_resource type="PackedScene" uid="uid://bh5syvsrjurhm" path="res://Scenes/boss_health_bar.tscn" id="6_7rpip"]
 [ext_resource type="PackedScene" uid="uid://dku7co8fktvs5" path="res://Scenes/kermit_supreme.tscn" id="6_taw36"]
 [ext_resource type="Script" uid="uid://xbgmfswvgp8l" path="res://Scenes/kermite_supreme.gd" id="8_2bspr"]
 [ext_resource type="FontFile" uid="uid://5pc5shvsgamy" path="res://Assets/Sprites/PixelifySans/PixelifySans-VariableFont_wght.ttf" id="8_2s36y"]
 [ext_resource type="PackedScene" uid="uid://dr4ib5gybpc3l" path="res://Scenes/healthbar.tscn" id="9_i6udk"]
-[ext_resource type="AudioStream" uid="uid://ycdlijqsgura" path="res://Assets/Spyro 2_ Ripto's Rage! - Attack of the Lava Lizards 2.mp3" id="10_2bspr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fefva"]
 texture = ExtResource("1_jr0as")
@@ -134,7 +134,7 @@ size = Vector2(107.97856, 36.273945)
 [node name="FrogArena" type="Node2D"]
 
 [node name="Ant" parent="." instance=ExtResource("1_fefva")]
-position = Vector2(192, -28)
+position = Vector2(192, -31)
 floor_max_angle = 0.87266463
 floor_snap_length = 14.0
 safe_margin = 0.02
@@ -153,10 +153,7 @@ position = Vector2(5984, 463)
 scale = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("9_i6udk")]
-position = Vector2(782, 2)
-scale = Vector2(2, 2)
+script = ExtResource("4_2bspr")
 
 [node name="TrickNotifier" parent="CanvasLayer" node_paths=PackedStringArray("bossHealthbar") instance=ExtResource("4_1n6mm")]
 bossHealthbar = NodePath("../BossHealthBar")
@@ -185,6 +182,8 @@ offset_bottom = 352.0
 text = "Kermit Supreme"
 label_settings = SubResource("LabelSettings_7rpip")
 script = ExtResource("8_2bspr")
+
+[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("9_i6udk")]
 
 [node name="KermitSupreme" parent="." instance=ExtResource("6_taw36")]
 position = Vector2(-256, -8848)
@@ -336,11 +335,6 @@ shape = SubResource("RectangleShape2D_7rpip")
 position = Vector2(2303, 421)
 scale = Vector2(7.0707326, -0.9523062)
 shape = SubResource("RectangleShape2D_7rpip")
-
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_2bspr")
-volume_db = -10.0
-parameters/looping = true
 
 [connection signal="airtime_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_airtime_success"]
 [connection signal="flip_success" from="Ant" to="CanvasLayer/TrickNotifier" method="_on_ant_flip_success"]

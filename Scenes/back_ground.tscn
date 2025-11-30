@@ -11,6 +11,7 @@ follow_viewport_scale = 186.567
 z_index = -1
 texture_filter = 1
 texture_repeat = 3
+position = Vector2(0, 20)
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(1536, 0)
 

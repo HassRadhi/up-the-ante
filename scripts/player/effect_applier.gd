@@ -13,9 +13,9 @@ func _ready() -> void:
 func _apply_hit_affect() -> void:
 	if !immune:
 		SignalBus.stun_player.emit()
+		SignalBus.player_damaged.emit()
 		body.velocity = LAUNCH_VELOCITY if BossHandler.facingRight else LAUNCH_VELOCITY * Vector2(-1,1)
-	
-	else:
+		
 		iframes.start()
 		immune = true
 

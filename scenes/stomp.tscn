@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://o5qntbo4uhww"]
+[gd_scene load_steps=6 format=3 uid="uid://o5qntbo4uhww"]
 
 [ext_resource type="Script" uid="uid://b15aeojpun2hf" path="res://Scripts/Bosses/Kermit/stomp.gd" id="1_2hta0"]
 [ext_resource type="PackedScene" uid="uid://c2i57tewpx0y3" path="res://Scenes/smoke.tscn" id="2_2hta0"]
 [ext_resource type="Script" uid="uid://bvdsjlgthkodk" path="res://Scripts/Bosses/Kermit/stomp_collision.gd" id="3_lediw"]
+[ext_resource type="AudioStream" uid="uid://cpn8senr3cu6p" path="res://Assets/giant-stompinggg-sfx.mp3" id="4_j053c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hta0"]
 size = Vector2(20.386475, 20)
@@ -29,6 +30,9 @@ position = Vector2(6.4000034, 0)
 scale = Vector2(33.12, 1)
 shape = SubResource("RectangleShape2D_2hta0")
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j053c")
 
 [connection signal="timeout" from="FartCD" to="." method="_on_fart_cd_timeout"]
 [connection signal="body_shape_entered" from="Area2D" to="Area2D" method="_on_body_shape_entered"]

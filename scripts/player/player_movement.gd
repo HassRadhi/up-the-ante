@@ -216,6 +216,5 @@ func _on_kermit_supreme_boss_collision_start() -> void:
 func _on_kermit_supreme_boss_collision_end() -> void:
 	$CollisionShape2D._player_exited_boss_hurtbox()
 
-
 func _on_kermite_supreme_enable_player() -> void:
 	disabled = false
